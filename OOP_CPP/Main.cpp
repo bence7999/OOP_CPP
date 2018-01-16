@@ -7,7 +7,7 @@ void Exit();
 
 int main() {
 
-	Prime1();
+	Circle();
 
 	Exit();
 	return 0;
@@ -18,8 +18,8 @@ void Exit() {
 	std::string str;
 	while (exit)
 	{
-		std::cout << "\nDo you want exit: (y/n)";
 		std::cin.clear();
+		std::cout << "\nDo you want exit: (y/n)";
 		getline(std::cin, str);
 		const char *cstr = str.c_str();
 		if (*cstr == 'y')

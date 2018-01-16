@@ -182,4 +182,64 @@ void Prime1() {
 	else cout << "n is not prime";
 }
 
+///////////////////////////
+////       TASKS       ////
+///////////////////////////
 
+// 1. Explain why language supports type double and long when type int and float exists.
+
+// 2. What are the typical uses of type reference?
+
+// 3. Explain the two-step process of automatic type conversion during evaluation of expressions.
+
+// 4. Describe the syntax and state the advantage of typedef facility
+
+// 5. Write a note on selecting an appropriate control structure for a particular task.
+
+// 6. Explain what is meant by term block. Comment on the scope of variables declared in a block.
+
+// 7. Read five real numbers (float) and find its average.
+
+float AverageOfFloats() {
+	float sum = 0;
+	float loc;
+	
+	for (int i = 0; i < 5; i++) {
+		cin >> loc;
+		sum += loc;
+	}
+
+	return sum / 5;
+}
+
+// 8. Write a program to accept a character from the user in variable ch and display its ASCII value.
+
+void WriteASCII() {
+	char ch = cin.get();
+
+	cout << (int)ch << endl;
+}
+
+// 9. Find the diameter, circumference and area of circle with given radius.
+
+void Circle() {
+	float r;
+	float pi = 3.14159265359;
+	
+	cin >> r;
+
+	float d = 2 * r;
+	float c = 2 * r * pi;
+	float a = r * r * pi;
+
+	cout << "diameter: " << d << " circumference: " << c << " area: " << a << endl;
+}
+
+// 10. Estimate the time needed for a stone to fall from height of 3000 m. Assume g = 9.8 m/s2.
+
+void Estimation() {
+	float g = 9.81;
+	float h = 3000;
+
+
+}

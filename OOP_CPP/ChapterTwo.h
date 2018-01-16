@@ -28,3 +28,9 @@ void Sinx();
 void Accuracy();
 
 void Prime1();
+
+float AverageOfFloats();
+
+void WriteASCII();
+
+void Circle();
