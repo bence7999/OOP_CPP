@@ -7,7 +7,7 @@ void Exit();
 
 int main() {
 
-	Circle();
+	LowestCommonMultiple();
 
 	Exit();
 	return 0;

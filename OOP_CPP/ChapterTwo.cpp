@@ -1,4 +1,4 @@
-#include "ChapterTwo.h"
+﻿#include "ChapterTwo.h"
 
 using namespace std;
 
@@ -76,7 +76,7 @@ void Input1() {
 	double value_of_pi = 3.1415926536;
 	cout << "<---input1.cpp--->" << endl;
 	cout << setfill('#');
-	cout << setw(15) << setprecision(8) << value_of_pi << endl; // setw(15) - �sszeen 15 hossz�nak kell lennie, a t�bbi #
+	cout << setw(15) << setprecision(8) << value_of_pi << endl; // setw(15) - összeen 15 hosszúnak kell lennie, a többi #
 	cout << setw(12) << setprecision(4) << value_of_pi << endl;
 }
 
@@ -238,8 +238,201 @@ void Circle() {
 // 10. Estimate the time needed for a stone to fall from height of 3000 m. Assume g = 9.8 m/s2.
 
 void Estimation() {
+	// h = 0,5 * g * t^2
+
 	float g = 9.81;
 	float h = 3000;
 
+	float t = sqrt((2 * h) / g);
+
+	cout << "Required time is: " << t << endl;
 
 }
+
+// 11. Find the distance between two points (20, 20) and (40, 50).
+
+void Distance() {
+	// d=sqrt((x2​−x1​)^2+(y2​−y1​)^2)
+
+	int x1 = 20, y1 = 20, x2 = 40, y2 = 50;
+	float d = sqrt(pow(x2 - x1,2)+ pow(y2 - y1, 2));
+
+	cout << "Distance is: " << d << endl;
+}
+
+// 12. If a straight line passes through points (1, 4) and (12, 56) decide if given point (x1, y1) lies on this straight line or not.
+
+void LiesOnLine() {
+	// m = (y2 - y1) / (x2 - x1)
+	// e => y - y0 = m * (x - x0)
+
+	int x1 = 1, y1 = 4, x2 = 12, y2 = 56;
+
+	float m = (y2 - y1) / (x2 - x1);
+
+	int x, y;
+
+	cout << "Give x and y: " << endl;
+	cin >> x >> y;
+
+	if ((y - y1) == m*(x - x1))
+		cout << "The given point lies on the line!";
+	else
+		cout << "The gien point does not lie on the line!";
+}
+
+// 13. Find if a given point lies inside a given circle or not.
+
+void InsideCircle() {
+	int r = 5;
+	int x = 2, y = 3;
+	int x0, y0;
+
+	cout << "Give x and y: " << endl;
+	cin >> x0 >> y0;
+
+	float d = sqrt(pow(x - x0, 2) + pow(y - y0, 2));
+
+	if (d < r)
+		cout << "The given point is inside the circe!";
+	else
+		cout << "The given point in not inside the circle!";
+}
+
+// 14. Write a program to accept an integer “num” from user. Check whether the given integer is even or odd and display appropriate message
+
+void EvenOrOdd() {
+	int i;
+	
+	cout << "Give an integer: " << endl;
+	cin >> i;
+
+	if (i % 2 == 0)
+		cout << i << " is even!";
+	else
+		cout << i << " is odd!";
+}
+
+// 15. Find the amount returned after 10 years if Rs. 5,000 are deposited for 10 years. Assume interest rate of 12%. Interest is compounded quarterly.
+
+void CalculateInterest() {
+	float amount = 5000;
+	float time = 10;
+	float rate = 12;
+
+	float interest = amount * (rate / 100) * time;
+
+	cout << "The interest is: " << interest;
+}
+
+// 16. Find the largest of given five integers.
+
+void LargestNumber() {
+	cout << "Give me 5 number: " << endl;
+
+	int largest = 0;
+	for (int i = 0; i < 5; i++) {
+		int num;
+		cin >> num;
+		if (num > largest)
+			largest = num;
+	}
+
+	cout << "The given largestnumber is: " << largest;
+}
+
+// 17. A professor took Rs. 30 lakh loan from HDFC for a term of 20 years. 
+//	   If payment is in equal instalments at the end of every year, find the yearly instalment. 
+//     If professor returns Rs 5 lakh at the end of fifth year as addition payment, find the reduction in instalments in remaining years. Assume rate of interest as 11%.
+
+void CalculateInterest2() {
+	float amount = 30;
+	float time = 20;
+	float rate = 11;
+	int redemption = 5;
+
+	float equal_instalments = amount * (rate / 100) * time;
+
+	cout << "Without redemption at the and of 20 years the interest is: " << equal_instalments << endl;
+
+	float redeemed_instalments = 0;
+
+	for (int i = 0; i < time; i++) {
+		redeemed_instalments += amount * (rate / 100);
+		if (i % redemption == 0)
+			amount -= redemption;
+	}
+
+	cout << "With redemption at the and of 20 years the interest is: " << redeemed_instalments << endl;
+}
+
+// 18. Find roots of a given quadratic equation.
+
+// 19. Write a program to accept three sides of a triangle in a, b and c. Check whether the triangle is constructible or not. 
+//     If yes, then find whether the triangle is equilateral, isosceles or scalene.
+
+bool _liesOnLine(int x1, int y1, int x2, int y2, int x, int y) {
+	float m = (y2 - y1) / (x2 - x1);
+	if ((y - y1) == m*(x - x1))
+		return true;
+	else
+		return false;
+}
+
+float _distance(int x1, int y1, int x2, int y2) {
+	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
+
+void ConstructibleTriangle() {
+	int x1, y1, x2, y2, x3, y3;
+
+	cout << "Give me 3 pair point for triangle: " << endl;
+
+	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+
+	if (_liesOnLine(x1, y1, x2, y2, x3, y3)) {
+		cout << "The triangle is not constructible!" << endl;
+		return;
+	}
+	else
+		cout << "The triangle is constructible!" << endl;
+	
+	float d1 = _distance(x1, y1, x2, y2);
+	cout << "d1: " << d1 << endl;
+	float d2 = _distance(x2, y2, x3, y3);
+	cout << "d2: " << d2 << endl;
+	float d3 = _distance(x3, y3, x1, y1);
+	cout << "d3: " << d3 << endl;
+
+	if ((d1 == d2) && (d1 == d3))
+		cout << "This is a equilateral triangle!" << endl;
+	else if (((d1 == d2) && (d1 != d3)) || ((d2 == d3) && (d2 != d1)) || ((d3 == d1) && (d3 != d1)))
+		cout << "This is a isosceles triangle!" << endl;
+	else if ((d1 != d2) && (d2 != d3) && (d3 != d1))
+		cout << "This is a scalene triangle!" << endl;
+}
+
+// 20. Find LCM of given two integers.
+
+void LowestCommonMultiple() {
+	int n1, n2, minMultiple;
+
+	cout << "Give 2 number: " << endl;
+	cin >> n1 >> n2;
+
+	minMultiple = (n1>n2) ? n1 : n2;
+
+	while (true)
+	{
+		if (minMultiple%n1 == 0 && minMultiple%n2 == 0)
+		{
+			cout << "The LCM of is: " <<  minMultiple << endl;
+			break;
+		}
+		++minMultiple;
+	}
+}
+
+// 21. Find the largest integer value n, such that its factorial can be correctly stored in variable of type “long”.
+
+
