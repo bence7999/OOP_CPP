@@ -6,9 +6,9 @@
 
 void Exit();
 
-int main() {
+int main(int argc, char *argv[]) {
 
-	DisplayPattern();
+	FindRootsOfQE();
 
 	Exit();
 	return 0;
