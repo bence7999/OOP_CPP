@@ -27,6 +27,8 @@ void CalculateInterest();
 
 void LargestNumber();
 
+void QuadraticEquation();
+
 void CalculateInterest2();
 
 void ConstructibleTriangle();
