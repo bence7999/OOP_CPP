@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include <iomanip>
+#include <bitset>
 #include "conio.h"
 #include "math.h"
 
@@ -30,3 +32,25 @@ void CalculateInterest2();
 void ConstructibleTriangle();
 
 void LowestCommonMultiple();
+
+void StoredFactorial();
+
+void SerielExpansionOfCos();
+
+void PrimeNumbers();
+
+void DepositTable();
+
+void SumOfNaturalNumbers();
+
+void Divisor();
+
+void ExpressInBinaryForm();
+
+void ReverseDigits();
+
+void SumOfDigits();
+
+void BinaryEquivalent();
+
+void DisplayPattern();

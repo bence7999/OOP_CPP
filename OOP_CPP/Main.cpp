@@ -7,7 +7,7 @@ void Exit();
 
 int main() {
 
-	LowestCommonMultiple();
+	DisplayPattern();
 
 	Exit();
 	return 0;
