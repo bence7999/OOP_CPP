@@ -251,7 +251,35 @@ void FobonacciNumbers() {
 // 5. Write a function to finds roots of quadratic equation.
 
 void FindRootsOfQE() {
-	QuadraticEquation();
+	// ax^2+bx+c = 0 -> a != 0
+	// D = b^2-4ac
+	// x = (-b +- sqrt(D))/2a
+
+	cout << "Give me 3 numbers a, b and c: ";
+	float a, b, c;
+
+	cin >> a >> b >> c;
+
+	float D = b*b - 4 * a*c;
+
+	if (D > 0) {
+		int x1, x2;
+		x1 = ((-b + sqrt(D)) / 2 * a);
+		x2 = ((-b - sqrt(D)) / 2 * a);
+		cout << "x1: " << x1 << endl << "x2: " << x2 << endl;
+	}
+	else if (D == 0) {
+		int x1;
+		x1 = ((-b + sqrt(D)) / 2 * a);
+		cout << "x1 == x2: " << x1;
+	}
+	else if (D < 0) {
+		float real, imag;
+		real = -b / (2 * a);
+		imag = sqrt(-D) / (2 * a);
+		cout << "x1: " << real << " + " << imag << "i" << endl;
+		cout << "x2: " << real << " - " << imag << "i" << endl;
+	}
 }
 
 // 6. 
