@@ -11,7 +11,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	CmpProgramme(argc, argv);
+	Cstyle1();
 	
 	Exit();
 	return 0;
