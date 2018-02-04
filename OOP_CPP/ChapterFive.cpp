@@ -7,16 +7,34 @@ using namespace std;
 class Date
 {
 private:
-	int day, month;
+	int day, month, year;
 public:
-	int year;
+	Date(int d, int m, int y) {
+		day = d;
+		month = m;
+		year = y;
+	}
+	int getDay() { return day; }
+	int getMonth() { return month; }
+	int getYear() { return year; }
+	bool isLeap();
+	bool validate();
 };
 
 void Hiding() {
-	Date date1;
+	Date date1(13, 13, 2009);
+	bool valid = date1.validate();
+	if (!valid) {
+		cout << "invalid date!" << endl;
+		return;
+	}
 	cout << "<-- - hiding.cpp--->" << endl;
-	date1.year = 2009;
-	cout << "Now we are in Year " << date1.year << " AD" << endl;
+	cout << "Now we are in Year " << date1.getYear() << " AD" << endl;
+	bool leap = date1.isLeap();
+	if (leap)
+		cout << date1.getYear() << "is a leap year." << endl;
+	else
+		cout << date1.getYear() << "is not a leap year." << endl;
 	//date1.day= 10; // Note1
 	//cout << date1.day; // Note2
 }
@@ -92,6 +110,7 @@ public:
 	int xc, yc;
 	void init(int i, int j);
 	void show();
+	friend int Distance(Point);
 };
 
 float distance(Point p);
@@ -557,6 +576,9 @@ public:
 	void read();
 	friend Complex_2 addComplex(Complex_2 a, Complex_2 b);
 	friend Complex_2 multiComplex(Complex_2 a, Complex_2 b);
+	friend Complex_2 conjugateComplex(Complex_2 a);
+	friend Complex_2 divideComplex(Complex_2 a, Complex_2 b);
+	friend Complex_2 subtactComplex(Complex_2 a, Complex_2 b);
 };
 
 void Complex2() {
@@ -572,6 +594,12 @@ void Complex2() {
 	c.write();
 	c = multiComplex(a, b);
 	cout << endl << "After multiplication " << endl;
+	c.write();
+	c = subtactComplex(a, b);
+	cout << endl << "After subtraction " << endl;
+	c.write();
+	c = divideComplex(a, b);
+	cout << endl << "After dividing " << endl;
 	c.write();
 }
 
@@ -668,4 +696,244 @@ void Money::print()
 ////       TASKS       ////
 /////////////////////////// 
 
+// 1. What is a class in C++? How does it compare with structure in C?
 
+// 2. Define the following terms with the help of meaningful examples:
+//    1. Objects
+//    2. Class
+//    3. Method
+//    4. Encapsulation
+
+// 3. What are access specifiers? List all the three access specifiers and discuss their advantages and disadvantages.
+
+// 4. Explain what are merits and demerits of passing objects as a value parameter?
+
+// 5. Explain what are merits and demerits of passing objects as a variable parameter?
+
+// 6. What are inline functions? What are the advantages of inline functions?
+
+// 7. Explain with an example the use of “Friend” function.
+
+// 8. What are friend functions? What are its implications on information hiding?
+
+// 9. What are static class members? What are their advantages and disadvantages?
+
+// 10. Can a function return an object?
+
+// 11. What will happen if all the data members and methods of a class are private?
+
+// 12. Explain the ideal class definition.
+
+// 13. For the class defined earlier for complex numbers, develop functions for the following tasks.
+//     1. Divide a complex number by another.
+//     2. Subtract one complex number from the other.
+//     3. Find the conjugate of a complex number.
+
+Complex_2 conjugateComplex(Complex_2 a)
+{
+	Complex_2 z;
+	z.x = a.x;
+	z.y = -1 * a.y;
+	return(z);
+}
+
+Complex_2 subtactComplex(Complex_2 a, Complex_2 b)
+{
+	Complex_2 z;
+	z.x = (a.x) - (b.x);
+	z.y = (a.y) - (b.y);
+	return(z);
+}
+
+Complex_2 divideComplex(Complex_2 a, Complex_2 b)
+{
+	Complex_2 con = conjugateComplex(b);
+	Complex_2 numerator = multiComplex(a, con);
+	Complex_2 denominator = multiComplex(b, con);
+	Complex_2 z;
+	z.x = numerator.x / denominator.x;
+	z.y = numerator.y / denominator.x;
+
+	return(z);
+}
+
+// 14. In simple class Date, add Boolean method isLeap() which tests if the year is leap year or not.
+
+bool Date::isLeap() {
+	if (year % 4 == 0)
+	{
+		if (year % 100 == 0)
+		{
+			// year is divisible by 400, hence the year is a leap year
+			if (year % 400 == 0)
+				//cout << year << "is a leap year." << endl;
+				return 1;
+			else
+				//cout << year << "is not a leap year." << endl;
+				return 0;
+		}
+		else
+			//cout << year << "is a leap year." << endl;
+			return 1;
+	}
+	else
+		//cout << year << "is not a leap year." << endl;
+		return 0;
+}
+
+// 15. In simple class Date, add boolean method validate() which validates the date value. Validating requires checking the value of variable day. 
+//     It should be greater than zero and less than or equal to maximum value for the given month. Hint: Use previously developed method isleap().
+
+bool Date::validate() {
+
+	if (year > 0 && year < 2019) {
+		if (month > 0 && month < 12){
+			if (day > 0 && day < 31) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+		else {
+			return 0;
+		}
+	}
+	else {
+		return 0;
+	}
+
+}
+
+// 16. In simple class Point, design a friend method which calculates and returns the Distance of that point from origin.
+
+int Distance(Point p) {
+	return sqrt(pow(p.xc,2)+pow(p.yc,2));
+}
+
+// 17. Declare a class FixedDeposit with two long members as rupee, paise and an integer member period. Develop method long maturityAmount() returning maturity amount assuming 10% interest rate. 
+
+class FixedDeposit {
+	long rupee, paise;
+	int period;
+public:
+	FixedDeposit(long r, long pa, int pe);
+	long maturityAmount();
+};
+
+long FixedDeposit::maturityAmount() {
+	return period * (100 * rupee + paise) * 0.1;
+}
+
+void Deposit() {
+	FixedDeposit df(10, 32, 5);
+	cout << "the interest is : " << df.maturityAmount() << endl;
+
+}
+
+FixedDeposit::FixedDeposit(long r, long pa, int pe) {
+	rupee = r;
+	paise = pa;
+	period = pe;
+}
+
+// 18. Declare class circle with integer attributes xcor, ycor and rad declared private. Declare a class Point with private attributes x and y. 
+//     Define boolean function inCircle(Circle c1, Point p1) to test whether the point p1 is inside the circle c1. Is it necessary that this function is a friend function? If not, then in which class should it be declared?
+
+class Point_3;
+
+class Circle {
+	int xcor, ycor, rad;
+public:
+	Circle(int, int, int);
+	friend bool inCircle(Circle c1, Point_3 p1);
+};
+
+class Point_3 {
+	int x, y;
+public:
+	Point_3(int, int);
+	friend bool inCircle(Circle c1, Point_3 p1);
+};
+
+void CheckInCircle() {
+	Circle c(4 , 4, 7);
+	Point_3 p(5, 6);
+
+	bool in = inCircle(c, p);
+	if (in)
+		cout << "the given point is inside the given circle!" << endl;
+	else
+		cout << "the given point is not inside the given circle!" << endl;
+}
+
+bool inCircle(Circle c1, Point_3 p1) {
+	float distance = sqrt(pow(c1.xcor - p1.x, 2) + pow(c1.ycor - p1.y, 2));
+	if (distance < c1.rad)
+		return true;
+	else
+		return false;
+}
+
+Circle::Circle(int x, int y, int r) {
+	xcor = x;
+	ycor = y;
+	rad = r;
+}
+
+Point_3::Point_3(int x, int y) {
+	x = x;
+	y = y;
+}
+
+// 19. Declare a class SavingsBankAccount with private data members accNum and balance. If you have to include attribute rateOfInterest, will you make it static? Write a small program using few objects of this class.
+
+class SavingsBankAccount {
+	int accNum, balance;
+};
+
+// 20. Define a class Box with attributes length, breadth and height. Write a program to find the volume of the box using method volume().
+
+class Box {
+	int length, breadth, height;
+public:
+	Box(int, int, int);
+	int Volume();
+};
+
+void GetVolume() {
+	Box b(3, 4, 7);
+	cout << "volume of box: " << b.Volume() << endl;
+}
+
+Box::Box(int l, int b, int h) {
+	length = l;
+	breadth = b;
+	height = h;
+}
+
+int Box::Volume() {
+	return length * breadth * height;
+}
+
+// 21. Design a class Card to represent standard playing card. It should have at least one member to store the value and at least one method to display (show() or print() ).
+
+class Card {
+	int value;
+public:
+	Card(int);
+	void print();
+};
+
+void CardGame() {
+	Card c(5);
+	c.print();
+}
+
+Card::Card(int c) {
+	value = c;
+}
+
+void Card::print() {
+	cout << value << endl;
+}

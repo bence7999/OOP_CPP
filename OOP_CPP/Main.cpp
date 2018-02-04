@@ -11,7 +11,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	Cstyle1();
+	CardGame();
 	
 	Exit();
 	return 0;

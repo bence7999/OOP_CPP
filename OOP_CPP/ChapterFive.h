@@ -1,5 +1,6 @@
 #include <iostream>
-#include<time.h>
+#include <time.h>
+#include <cmath>
 
 void Hiding();
 
@@ -28,3 +29,11 @@ void Complex1();
 void Complex2();
 
 void Cstyle1();
+
+void Deposit();
+
+void CheckInCircle();
+
+void GetVolume();
+
+void CardGame();
