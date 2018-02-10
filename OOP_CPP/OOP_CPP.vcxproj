@@ -112,7 +112,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChapterFive.cpp" />
-    <ClCompile Include="ChapterFour.cpp" />
     <ClCompile Include="ChapterSix.cpp" />
     <ClCompile Include="ChapterThree.cpp" />
     <ClCompile Include="ChapterTwo.cpp" />
@@ -120,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterFive.h" />
-    <ClInclude Include="ChapterFour.h" />
     <ClInclude Include="ChapterSix.h" />
     <ClInclude Include="ChapterThree.h" />
     <ClInclude Include="ChapterTwo.h" />

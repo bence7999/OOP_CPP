@@ -24,9 +24,6 @@
     <ClCompile Include="ChapterThree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ChapterFour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ChapterFive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChapterThree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChapterFour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChapterFive.h">

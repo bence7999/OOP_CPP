@@ -2,7 +2,6 @@
 #include <string>
 #include "ChapterTwo.h"
 #include "ChapterThree.h"
-#include "ChapterFour.h"
 #include "ChapterFive.h"
 #include "ChapterSix.h"
 
@@ -11,9 +10,9 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	CardGame();
+	chapterSix::DateString();
 	
-	Exit();
+	Exit(); 
 	return 0;
 }
 
