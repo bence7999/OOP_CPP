@@ -4,13 +4,15 @@
 #include "ChapterThree.h"
 #include "ChapterFive.h"
 #include "ChapterSix.h"
+#include "ChapterSeven.h"
+#include "ChapterEight.h"
 
 
 void Exit();
 
 int main(int argc, char *argv[]) {
 
-	chapterSix::DateString();
+	chapterSeven::DateString();
 	
 	Exit(); 
 	return 0;
