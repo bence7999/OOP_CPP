@@ -111,14 +111,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChapterEight.cpp" />
     <ClCompile Include="ChapterFive.cpp" />
+    <ClCompile Include="ChapterSeven.cpp" />
     <ClCompile Include="ChapterSix.cpp" />
     <ClCompile Include="ChapterThree.cpp" />
     <ClCompile Include="ChapterTwo.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChapterEight.h" />
     <ClInclude Include="ChapterFive.h" />
+    <ClInclude Include="ChapterSeven.h" />
     <ClInclude Include="ChapterSix.h" />
     <ClInclude Include="ChapterThree.h" />
     <ClInclude Include="ChapterTwo.h" />

@@ -12,7 +12,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	chapterSeven::DateString();
+	chapterSeven::Ratnum1();
 	
 	Exit(); 
 	return 0;
