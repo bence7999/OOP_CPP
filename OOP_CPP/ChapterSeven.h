@@ -34,4 +34,20 @@ namespace chapterSeven {
 
 	void Ratnum1();
 
+	///
+
+	void VektorAddOperator();
+
+	void PolarEqualRecta();
+
+	void UserFloat();
+
+	void OverloadPow();
+
+	void DollarToRupee();
+
+	void PrintPoint();
+
+	void RationalToDouble();
+
 }

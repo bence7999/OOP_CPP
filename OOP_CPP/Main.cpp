@@ -12,7 +12,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	chapterSeven::Ratnum1();
+	chapterSeven::RationalToDouble();
 	
 	Exit(); 
 	return 0;

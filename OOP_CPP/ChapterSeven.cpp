@@ -140,7 +140,7 @@ namespace chapterSeven {
 
 	IndCur::IndCur(long p, long q)
 	{
-		if ((p<0) || (q<0) || (q>99))
+		if ((p < 0) || (q < 0) || (q > 99))
 		{
 			cout << "initialsation error" << endl;
 			cout << "terminating the program" << endl;
@@ -181,7 +181,7 @@ namespace chapterSeven {
 		friend IndCur1 operator*(float rate, IndCur1 amt);
 	};
 
-	void Money9(){
+	void Money9() {
 		cout << "<-- - money9.cpp--->" << endl;
 		IndCur1 amt1(1000, 50);
 		IndCur1 amt2(0, 0);
@@ -201,7 +201,7 @@ namespace chapterSeven {
 
 	IndCur1::IndCur1(long p, long q)
 	{
-		if ((p<0) || (q<0) || (q>99))
+		if ((p < 0) || (q < 0) || (q > 99))
 		{
 			cout << "initialization error" << endl;
 			cout << "terminating the program" << endl;
@@ -358,7 +358,7 @@ namespace chapterSeven {
 	void Inc2() {
 		RatNum n1(1, 1), n2(1, 1), n3(1, 1);
 		cout << "<-- - inc2.cpp--->" << endl;
-		cout << "n1 is : ";     
+		cout << "n1 is : ";
 		n1.show();
 		cout << "n2 is : ";
 		n2.show();
@@ -492,7 +492,7 @@ namespace chapterSeven {
 	}
 
 	Amount_2 operator+(Amount_2 a1, Amount_2 a2)
-	{ 
+	{
 		Amount_2 temp(0, 0);
 		temp.rupee = a1.rupee + a2.rupee;
 		temp.paise = a1.paise + a2.paise;
@@ -532,6 +532,7 @@ namespace chapterSeven {
 			yc = dd.yc;
 		}
 		void show();
+		friend ostream & operator << (ostream & temp, Point p);
 	};
 
 	void Assign1() {
@@ -807,4 +808,389 @@ namespace chapterSeven {
 		return num1;
 	}
 
+	///////////////////////////
+	////       TASKS       ////
+	/////////////////////////// 
+
+	// 1. What is operator overloading?
+
+	// 2. Differentiate between function overloading and operator overloading by giving examples.
+
+	// 3. List the operators that cannot be overloaded. What may be the reasons for the same?
+
+	// 4. What are the limitations of operator overloading?
+
+	// 5. What is operator overloading? What is the use of operator overloading? If the meaning of any operator is changed, will compiler generate error?
+
+	// 6. Is it possible for operator function to return by reference? If yes develop a suitable application using this principle.
+
+	// 7. What differences exist between overloading of binary and unary operators?
+
+	// 8. Can we overload ++ as well as -- operator? What about pre- and post-increment?
+
+	// 9. What do you understand by conversion function? Discuss various types (flavours) of conversion functions.
+
+	// 10. Explain the technique of type conversion from one class type to another class type with example.
+
+	// 11. We have two classes ‘X’ and ‘Y’. If ‘a’ is an object of X and ‘b’ is an object of Y and we want to say “a=b”. What type of conversion routine should be used and where?
+
+	// 12. Define simple class Vector and write a program to overload arithmetic operator plus(+) for adding vectors.
+
+	class Vektor
+	{
+	public:
+		Vektor();
+		Vektor(int, int);
+		~Vektor();
+		Vektor operator+(Vektor v);
+		void show();
+	private:
+		int magnitude, direction;
+	};
+
+	void VektorAddOperator() {
+		Vektor v1(2, 3), v2(1, 2), v3;
+		v1.show();
+		v2.show();
+		v3 = v1 + v2;
+		v3.show();
+	}
+
+	Vektor::Vektor() {
+		this->magnitude = 0;
+		this->direction = 0;
+	}
+
+	Vektor::Vektor(int m, int d)
+	{
+		this->magnitude = m;
+		this->direction = d;
+	}
+
+	Vektor Vektor::operator+(Vektor v) {
+		Vektor tmp;
+		tmp.direction = this->direction + v.direction;
+		tmp.magnitude = this->magnitude + v.magnitude;
+		return tmp;
+	}
+
+	void Vektor::show() {
+		cout << "{" << this->magnitude << "," << this->direction << "}" << endl;
+	}
+
+	Vektor::~Vektor()
+	{
+	}
+
+	// 13. Design classes PolarPoint and RectaPoint. Both the classes are for points such that first one is based on polar coordinates while the other stores rectangular co-ordinates. 
+	//     Overload assignment (=) operator to copy an object of PolarPoint class to object of RectaPoint class.
+
+	class RectaPoint;
+
+	class PolarPoint
+	{
+	public:
+		PolarPoint(float, float);
+		~PolarPoint();
+		void operator=(RectaPoint);
+		void show();
+		float getDistance() {
+			return distance;
+		}
+		float getAngle() {
+			return angle;
+		}
+	private:
+		float distance, angle;
+	};
+
+	PolarPoint::PolarPoint(float d, float a) {
+		this->angle = a * M_PI / 180;
+		this->distance = d;
+	}
+
+	PolarPoint::~PolarPoint() {}
+
+	class RectaPoint
+	{
+	public:
+		RectaPoint(float, float);
+		~RectaPoint();
+		float getx() {
+			return xc;
+		}
+		float gety() {
+			return yc;
+		}
+		void operator=(PolarPoint);
+		void show();
+	private:
+		float xc, yc;
+	};
+
+	RectaPoint::RectaPoint(float x, float y) {
+		this->xc = x;
+		this->yc = y;
+	}
+
+	RectaPoint::~RectaPoint() {}
+
+	void PolarEqualRecta() {
+		PolarPoint pp1(10, 45), pp2(0, 0);
+		pp1.show();
+		RectaPoint rp1(7.07, 7.07), rp2(0, 0);
+		rp1.show();
+
+		pp2 = rp1;
+		pp2.show();
+
+		rp2 = pp1;
+		rp2.show();
+	}
+
+	void PolarPoint::show() {
+		cout << "Polar co: distance: " << this->distance << " angle: " << this->angle * 180 / M_PI << endl;
+	}
+
+	void PolarPoint::operator=(RectaPoint rp) {
+		this->distance = sqrt(pow(rp.getx(), 2) + pow(rp.gety(), 2));
+		this->angle = atan(rp.getx() / rp.gety());
+	}
+
+	void RectaPoint::show() {
+		cout << "Certangular co: x: " << this->xc << " y: " << this->yc << endl;
+	}
+
+	void RectaPoint::operator=(PolarPoint pp) {
+		this->xc = pp.getDistance() * cos(pp.getAngle());
+		this->yc = pp.getDistance() * sin(pp.getAngle());
+	}
+
+	// 14. For classes PolarPoint and RectaPoint (from previous problem) design conversion functions to convert object of one type to another. 
+	//     It goes without saying that such functions will be substitute for overloaded assignment operator.
+
+	// 15. Create a class Float that contains one float data member; overload all four arithmetic operators, so that they operate on the objects of Float.
+
+	class Float
+	{
+	public:
+		Float(float);
+		~Float();
+		Float operator+(Float);
+		Float operator-(Float);
+		Float operator*(Float);
+		Float operator/(Float);
+		Float operator^(int);
+		friend ostream & operator <<(ostream&, Float);
+	private:
+		float data;
+	};
+
+	Float::Float(float f) {
+		this->data = f;
+	}
+
+	Float::~Float() {}
+
+	void UserFloat() {
+		Float f1(1), f2(2), f3(0);
+		cout << "float1: " << f1 << endl;
+		cout << "float2: " << f2 << endl;
+		f3 = f1 + f2;
+		cout << "float1 + float2: " << f3 << endl;
+		f3 = f1 - f2;
+		cout << "float1 - float2: " << f3 << endl;
+		f3 = f1 * f2;
+		cout << "float1 * float2: " << f3 << endl;
+		f3 = f1 / f2;
+		cout << "float1 / float2: " << f3 << endl;
+	}
+
+	Float Float::operator+(Float f) {
+		Float tmp(0);
+		tmp.data = this->data + f.data;
+		return tmp;
+	}
+
+	Float Float::operator-(Float f) {
+		Float tmp(0);
+		tmp.data = this->data - f.data;
+		return tmp;
+	}
+
+	Float Float::operator*(Float f) {
+		Float tmp(0);
+		tmp.data = this->data * f.data;
+		return tmp;
+	}
+
+	Float Float::operator/(Float f) {
+		Float tmp(0);
+		tmp.data = this->data / f.data;
+		return tmp;
+	}
+
+	ostream & operator << (ostream & temp, Float f) {
+		temp << f.data;
+		return temp;
+	}
+
+	// 16. Overload ‘^’ operator for calculating power function value (for example 8=2^3). Write a program to test this operator. 
+	//     Use a simple class Float which stores floating point numbers. Check your answer with function pow().
+
+	void OverloadPow() {
+		Float f1(3), f2(0);
+		cout << "float1: " << f1 << endl;
+
+		f2 = f1 ^ 3;
+		cout << f2 << endl;
+	}
+
+	Float Float::operator^(int p) {
+		Float tmp(0);
+		tmp.data = pow(this->data, p);
+		return tmp;
+	}
+
+	// 17. Design classes Dollar and Rupee support the following statements:
+	//     d1 = Dollar ( r1) ;
+	//     r2 = (Rupee) d2 ;
+	//     Write a complete program which does such conversions according to the world market value.
+	//     Take $ 1 = Rupees 39.45 as a conversion factor.
+
+	class Rupee;
+
+	class Dollar
+	{
+	public:
+		Dollar(float);
+		Dollar(Rupee);
+		~Dollar();
+		operator Rupee();
+		void show();
+		float getDollar() {
+			return dollar;
+		}
+	private:
+		float dollar;
+	};
+
+	class Rupee
+	{
+	public:
+		Rupee(float);
+		~Rupee();
+		operator Dollar();
+		void show();
+		float getRupee() {
+			return rupee;
+		}
+	private:
+		float rupee;
+	};
+
+	Dollar::Dollar(float d) {
+		this->dollar = d;
+	}
+
+	Dollar::Dollar(Rupee r) {
+		float rate = 39.45;
+		this->dollar = r.getRupee() / rate;
+	}
+
+	Dollar::~Dollar() {}
+
+	Rupee::Rupee(float r){
+		this->rupee = r;
+	}
+
+	Rupee::~Rupee() {}
+
+	void DollarToRupee() {
+		Dollar d1(5), d2(7);
+		Rupee r1(40), r2(2);
+		d1 = Dollar (r1);
+		r2 = (Rupee) d2;
+
+		d1.show();
+		d2.show();
+		r1.show();
+		r2.show();
+	}
+
+	void Dollar::show() {
+		cout << "Dollar: " << this->dollar << endl;
+	}
+
+	void Rupee::show() {
+		cout << "Rupee: " << this->rupee << endl;
+	}
+
+	Dollar:: operator Rupee() {
+		float rate = 39.45;
+		Rupee r(rate * dollar);
+		return r;
+	}
+
+	// 18. Let pt1 be the object of class Point. Is it possible that following statement
+	//     pt1 << cout ;
+	//     prints the object value. If possible write the complete program.
+
+	ostream & operator << (ostream & temp, Point p) {
+		temp << "x: " << p.xc << " y: " << p.yc;
+		return temp;
+	}
+
+	void PrintPoint() {
+		Point pt1(1, 1);
+		cout << pt1 << endl;
+	}
+
+	// 19. Design a conversion function to convert a rational number to double value.
+
+	class RationalNum
+	{
+	public:
+		RationalNum(float);
+		~RationalNum();
+		void show();
+		friend double rational_to_double(RationalNum);
+	private:
+		int p, q;
+	};
+
+	RationalNum::RationalNum(float n){
+		float num = n;
+		num = abs(num);
+		num -= int(num);
+		for(int i = 0; i < 5; i++) {
+			num = num * 10;
+			num -= int(num);
+		}
+		long divisor = pow(10, 5);
+		long nn = n*divisor;
+		long GrCoDi = gcd(nn, divisor);
+		this->p = n * divisor / GrCoDi;
+		this->q = divisor / GrCoDi;
+	}
+
+	RationalNum::~RationalNum()
+	{
+	}
+
+	void RationalToDouble() {
+		RationalNum r(3.56), r2(3), r3(3.5);
+		double d = rational_to_double(r);
+		cout << d << endl;
+	}
+
+	void RationalNum::show() {
+		cout << "p: " << p << " q: " << q << endl;
+	}
+
+	double rational_to_double(RationalNum rn) {
+		double d = (double) rn.p / (double) rn.q;
+		return d;
+	}
+	
 }
