@@ -12,7 +12,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	chapterSeven::RationalToDouble();
+	chapterEight::StringToString();
 	
 	Exit(); 
 	return 0;
