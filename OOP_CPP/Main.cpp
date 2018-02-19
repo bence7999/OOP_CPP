@@ -6,7 +6,8 @@
 #include "ChapterSix.h"
 #include "ChapterSeven.h"
 #include "ChapterEight.h"
-
+#include "ChapterNine.h"
+#include "ChapterTen.h"
 
 void Exit();
 
