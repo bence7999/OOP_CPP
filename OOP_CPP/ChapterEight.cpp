@@ -544,6 +544,7 @@ namespace chapterEight {
 		//for (char* p = this->a; p != this->a + this->len; ++p) {
 		//	cout << *p << endl;
 		//}
+
 		return this->a;
 	}
 

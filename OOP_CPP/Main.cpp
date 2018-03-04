@@ -13,7 +13,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	chapterEight::StringToString();
+	ChapterNine::CheckQueue();
 	
 	Exit(); 
 	return 0;
