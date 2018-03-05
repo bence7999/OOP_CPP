@@ -42,6 +42,15 @@
     <ClCompile Include="ChapterTen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ChapterEleven.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChapterTwelve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChapterThirteen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterTwo.h">
@@ -66,6 +75,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChapterTen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterEleven.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterTwelve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterThirteen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
