@@ -14,7 +14,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTen::PointInLine();
+	ChapterEleven::PrintMatrix();
 	
 	Exit(); 
 	return 0;
