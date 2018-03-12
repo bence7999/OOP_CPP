@@ -9,27 +9,27 @@
 #include "ChapterNine.h"
 #include "ChapterTen.h"
 #include "ChapterEleven.h"
+#include "ChapterTwelve.h"
 
 void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterEleven::PrintMatrix();
+	ChapterTwelve::ptr11();
 	
 	Exit(); 
 	return 0;
 }
 
 void Exit() {
-	bool exit = true;
 	std::string str;
-	while (exit)
+	while (true)
 	{
 		std::cin.clear();
 		std::cout << "\nDo you want exit: (y/n)";
 		getline(std::cin, str);
 		const char *cstr = str.c_str();
 		if (*cstr == 'y')
-			exit = false;
+			break;
 	}
 }
