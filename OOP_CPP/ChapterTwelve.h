@@ -1,6 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include <time.h>
+#include <list>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
 
 namespace ChapterTwelve {
 
@@ -25,5 +29,23 @@ namespace ChapterTwelve {
 	void Ptr7();
 
 	void ptr11();
+
+	void MaxMerory();
+
+	void DeAllocation();
+
+	void gambling();
+
+	/////////////////
+
+	void ThreeDimensionArray();
+
+	void IncAndPrint();
+
+	void MatrixNM();
+
+	void GetElements();
+
+	void CalSumEva();
 
 }

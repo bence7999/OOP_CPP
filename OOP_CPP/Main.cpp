@@ -15,7 +15,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTwelve::ptr11();
+	ChapterTwelve::Vec1();
 	
 	Exit(); 
 	return 0;
