@@ -11,6 +11,9 @@
 #include "ChapterEleven.h"
 #include "ChapterTwelve.h"
 #include "ChapterThirteen.h"
+#include "ChapterFourteeen.h"
+#include "ChapterFifteen.h"
+#include "ChapterSixteen.h"
 
 void Exit();
 
