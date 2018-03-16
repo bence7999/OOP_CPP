@@ -1,4 +1,4 @@
-#include "ChapterThirteen.h"
+﻿#include "ChapterThirteen.h"
 
 using namespace std;
 
@@ -453,7 +453,7 @@ namespace ChapterThirteen {
 	}
 
 	/// 13.10.2 Class shape
-	/// 13.7 Polymorphism � perimeter of shapes
+	/// 13.7 Polymorphism – perimeter of shapes
 	// Design a polymorphic class hierarchy for closed shapes such as circle, rectangle and triangle. 
 	// Also write a polymorphic function that calculates perimeter of these shapes. Write a program to test these classes.
 
@@ -552,6 +552,568 @@ namespace ChapterThirteen {
 	////       TASKS       ////
 	/////////////////////////// 
 
+	// 1. What is the difference between static and dynamic binding?
 
+	// 2. Differentiate between early binding and late binding.
+
+	// 3. Object-oriented programming is programming with Polymorphism. Justify this with a good example.
+
+	// 4. Can a derived class pointer point to base class object? Can a base class pointer point to derived class object?
+
+	// 5. How is polymorphism achieved at run time? Explain with C++ coding.
+
+	// 6. Explain the use of virtual functions with an example in the situation, where base class pointer points to derived class object.
+
+	// 7. Write down all the rules with respect to virtual functions.
+
+	// 8. What are pure virtual functions? Can classes having such functions be instantiated?
+
+	// 9. What are abstract classes? Can such classes be instantiated?
+
+	// 10. What is the use of an array of base class pointers?
+
+	// 11. Discuss advantages and disadvantages of “array of base class pointers”
+
+	// 12. Why member functions are not virtual by default?
+
+	// 13. Study the concept of “interface” from java language. Can this concept be implemented (directly or indirectly) in C++?
+
+	// 14. Define base class Window with virtual function show(). Let TextWindow and SplWindow classes inherit class window. 
+	//     Class SplWindow is TextWindow with title bar. Write a program to demonstrate that pointer to class Window can display a text or special window.
+
+	class Window
+	{
+	public:
+		Window();
+		~Window();
+		virtual void show();
+	private:
+
+	};
+
+	Window::Window()
+	{
+	}
+
+	Window::~Window()
+	{
+	}
+
+	class TextWindow: public Window
+	{
+	public:
+		TextWindow();
+		~TextWindow();
+		void show();
+	private:
+
+	};
+
+	TextWindow::TextWindow()
+	{
+	}
+
+	TextWindow::~TextWindow()
+	{
+	}
+
+	class SplWindow: public Window
+	{
+	public:
+		SplWindow();
+		~SplWindow();
+		void show();
+	private:
+
+	};
+
+	SplWindow::SplWindow()
+	{
+	}
+
+	SplWindow::~SplWindow()
+	{
+	}
+
+	void PointerToBase() {
+		Window *ptr;
+		ptr = new Window();
+		ptr->show();
+		ptr = new TextWindow();
+		ptr->show();
+		ptr = new SplWindow();
+		ptr->show();
+	}
+
+	void Window::show() {
+		cout << "This is a base Window!" << endl;
+	}
+
+	void TextWindow::show() {
+		cout << "This is an inherited TextWindow!" << endl;
+	}
+
+	void SplWindow::show() {
+		cout << "This is an inherited SplWindow!" << endl;
+	}
+
+	// 15. Imagine a publishing company that markets both book and audiocassette version to its works. 
+	//     Create a class publication that stores the title (a string) and price (type float) of a publication. 
+	//     From this class derive two classes: book, which adds a page count (type int); and tape, which adds a playing time in minutes (type float). 
+	//     Each of these three classes should have a getdata() function to gets its data from the user at the keyboard, and a putdata() function to display its data. 
+	//     Write a main( ) program in C++ to test the book and tape classes by creating instances of them, asking the user to fill in data with getdata(), and then displaying the data with putdata().
+
+	class Publication
+	{
+	public:
+		Publication();
+		~Publication();
+		string getTitle();
+		void setTitle(string);
+		float getPrite();
+		void setPrice(float);
+	private:
+		string title;
+		float price;
+	};
+
+	Publication::Publication()
+	{
+	}
+
+	Publication::~Publication()
+	{
+	}
+
+	class Book: public Publication
+	{
+	public:
+		Book();
+		~Book();
+		int getPageCount();
+		void setPageCount(int);
+	private:
+		int page_count;
+	};
+
+	Book::Book()
+	{
+	}
+
+	Book::~Book()
+	{
+	}
+
+	class Tape: public Publication
+	{
+	public:
+		Tape();
+		~Tape();
+		float getPlayingTime();
+		void setPlayingTime(float);
+	private:
+		float playing_time;
+	};
+
+	Tape::Tape()
+	{
+	}
+
+	Tape::~Tape()
+	{
+	}
+
+	void TestPublic() {
+		Book *b1 = new Book();
+		b1->setTitle("This is a Titile");
+		b1->setPrice(1500);
+		b1->setPageCount(345);
+
+		Tape *t1 = new Tape();
+		t1->setTitle("Best Songs");
+		t1->setPrice(1450);
+		t1->setPlayingTime(1.50);
+
+		cout << "title: " << b1->getTitle() << endl;
+		cout << "price: " << b1->getPrite() << endl;
+		cout << "Page Count: " << b1->getPageCount() << endl;
+
+		cout << "title: " << t1->getTitle() << endl;
+		cout << "price: " << t1->getPrite() << endl;
+		cout << "Playing Time: " << t1->getPlayingTime() << endl;
+	}
+
+	void Publication::setTitle(string t) {
+		title = t;
+	}
+
+	string Publication::getTitle() {
+		return title;
+	}
+
+	void Publication::setPrice(float p) {
+		price = p;
+	}
+
+	float Publication::getPrite() {
+		return price;
+	}
+
+	void Book::setPageCount(int pc) {
+		page_count = pc;
+	}
+
+	int Book::getPageCount() {
+		return page_count;
+	}
+
+	void Tape::setPlayingTime(float pt) {
+		playing_time = pt;
+	}
+
+	float Tape::getPlayingTime() {
+		return playing_time;
+	}
+
+	// 16. Write a class employee with two functions get_data() and put_data() to read the name and number of employee and display them, respectively. 
+	//     Drive two classes, one manager and other scientist. In manager class add one more variable title. In scientist class add more variable publication and display them.
+
+	class Employee2
+	{
+	public:
+		Employee2();
+		~Employee2();
+		void get_data();
+		void put_data(string, int);
+	private:
+		string name;
+		int number;
+	};
+
+	Employee2::Employee2()
+	{
+	}
+
+	Employee2::~Employee2()
+	{
+	}
+
+	void Employee2::get_data() {
+		cout << "name: " << name << endl;
+		cout << "number: " << number << endl;
+	}
+
+	void Employee2::put_data(string pname, int pnumber) {
+		name = pname;
+		number = pnumber;
+	}
+
+	class Manager: public Employee2
+	{
+	public:
+		Manager(string);
+		~Manager();
+		void show();
+	private:
+		string title;
+	};
+
+	Manager::Manager(string t)
+	{
+		title = t;
+	}
+
+	Manager::~Manager()
+	{
+	}
+
+	void Manager::show() {
+		cout << "title: " << title << endl;
+	}
+
+	class Scientist: public Employee2
+	{
+	public:
+		Scientist(int);
+		~Scientist();
+		void show();
+	private:
+		int publication;
+	};
+
+	Scientist::Scientist(int p)
+	{
+		publication = p;
+	}
+
+	Scientist::~Scientist()
+	{
+	}
+
+	void Scientist::show() {
+		cout << "publication: " << publication << endl;
+	}
+
+	void TestOfEmployee2() {
+		Manager *mg1 = new Manager("title1");
+		mg1->put_data("name 1", 10);
+
+		Scientist *sc1 = new Scientist(2010);
+		sc1->put_data("name2", 20);
+
+		mg1->get_data();
+		mg1->show();
+
+		sc1->get_data();
+		sc1->show();
+	}
+
+	// 17. Write a program in C++ that contains a class derived from base. The base class should have a virtual function show() and it should be overridden. 
+	//     Try to call show() from the constructor of the base class and display the result.
+
+	class BaseClass
+	{
+	public:
+		BaseClass();
+		~BaseClass();
+		virtual void show() = 0;
+	private:
+
+	};
+
+	BaseClass::BaseClass()
+	{
+		//show();
+	}
+
+	BaseClass::~BaseClass()
+	{
+	}
+
+	class DrivenClass: public BaseClass
+	{
+	public:
+		DrivenClass();
+		~DrivenClass();
+		void show() {
+			cout << "this is a drive class" << endl;
+		}
+	private:
+
+	};
+
+	DrivenClass::DrivenClass()
+	{
+	}
+
+	DrivenClass::~DrivenClass()
+	{
+	}
+
+	void TestVirtualOverridenFunc() {
+		DrivenClass *dc = new DrivenClass(); // Linker error
+	}
+
+	// 18. Design a polymorphic class hierarchy for students of university. They are two types of students: day scholars and hostellers. 
+	//     Assume that day scholars are having 30% fee concession (as they are not availing hostel facilities). Write a program to test this class. 
+	//     Hint: Let “Student” be the abstract base class with method fee as pure virtual function. The derived classes may be named as Std_Dscho and Std_Host.
+
+	class Student
+	{
+	public:
+		Student(string, string, int);
+		~Student();
+		virtual void show() = 0;
+		virtual float buy(int) = 0;
+		string name;
+		string department;
+		int age;
+		int price = 150;
+	};
+
+	Student::Student(string n, string d, int a)
+	{
+		name = n;
+		department = d;
+		age = a;
+	}
+
+	Student::~Student()
+	{
+	}
+
+	class Std_Dscho : public Student
+	{
+	public:
+		Std_Dscho(string, string, int, string);
+		~Std_Dscho();
+		void show();
+		float buy(int money);
+	private:
+		string home_city;
+		float conces = 0.3;
+	};
+
+	Std_Dscho::Std_Dscho(string n, string d, int a, string h): Student(n, d, a)
+	{
+		home_city = h;
+	}
+
+	Std_Dscho::~Std_Dscho()
+	{
+	}
+
+	class Std_Host : public Student
+	{
+	public:
+		Std_Host(string, string, int, string);
+		~Std_Host();
+		void show();
+		float buy(int money);
+	private:
+		string hostel_name;
+		float conces = 1.0;
+	};
+
+	Std_Host::Std_Host(string n, string d, int a, string h): Student(n, d, a)
+	{
+		hostel_name = h;
+	}
+
+	Std_Host::~Std_Host()
+	{
+	}
+
+	void TestStudents() {
+		Std_Dscho *ds = new Std_Dscho("Endre", "Info", 28, "Kiralyhago");
+		Std_Host *hs = new Std_Host("Viktor", "Mernok", 26, "Gyori u");
+
+		cout << "buy: " << ds->buy(15000) << endl;
+		ds->show();
+
+		cout << "buy: " << hs->buy(15000) << endl;
+		hs->show();
+	}
+
+	void Std_Dscho::show() {
+		cout << "name: " << name << " department: " << department << " age: " << age << endl;
+		cout << "home_city: " << home_city << endl;
+	}
+
+	void Std_Host::show() {
+		cout << "name: " << name << " department: " << department << " age: " << age << endl;
+		cout << "hostel_name: " << hostel_name << endl;
+	}
+
+	float Std_Dscho::buy(int money) {
+		return money / (price * conces);
+	}
+
+	float Std_Host::buy(int money) {
+		return money / (price * conces);
+	}
+
+	// 19. Design a polymorphic class hierarchy for closed shapes such as circle, rectangle and triangle. Also write a polymorphic function that calculates area of these shapes. 
+	//     Write a program to test these classes.
+
+	class Shape2
+	{
+	public:
+		Shape2();
+		~Shape2();
+		virtual void area() = 0;
+	};
+
+	Shape2::Shape2()
+	{
+	}
+
+	Shape2::~Shape2()
+	{
+	}
+
+	class Circle2: public Shape2
+	{
+	public:
+		Circle2(int, int, int);
+		~Circle2();
+		void area();
+	private:
+		int radius;
+		int x; int y;
+	};
+
+	Circle2::Circle2(int r, int xc, int yc)
+	{
+		radius = r; x = xc; y = yc;
+	}
+
+	Circle2::~Circle2()
+	{
+	}
+
+	class Rectangle2: Shape2
+	{
+	public:
+		Rectangle2(int, int, int, int, int, int, int, int);
+		~Rectangle2();
+		void area();
+	private:
+		int x1, y1, x2, y2, x3, y3, x4, y4;
+	};
+
+	Rectangle2::Rectangle2(int a, int b, int c, int d, int e, int f, int g, int h)
+	{
+		x1 = a; y1 = b; x2 = c; y2 = d;
+		x3 = e; y3 = f; x4 = g; y4 = h;
+	}
+
+	Rectangle2::~Rectangle2()
+	{
+	}
+
+	class Triangle2: public Shape2
+	{
+	public:
+		Triangle2(int, int, int, int, int, int);
+		~Triangle2();
+		void area();
+	private:
+		int x1, y1, x2, y2, x3, y3;
+	};
+
+	Triangle2::Triangle2(int a, int b, int c, int d, int e, int f)
+	{
+		x1 = a; y1 = b;
+		x2 = c; y2 = d;
+		x3 = e; y3 = f;
+	}
+
+	Triangle2::~Triangle2()
+	{
+	}
+
+	void TestShape2() {
+
+	}
+
+	void Circle2::area() {
+		float area = radius * radius * M_PI;
+		cout << "area of circle: " << area << endl;
+	}
+
+	void Rectangle2::area() {
+		float a = (y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1);
+		float b = (y3 - y2) * (y3 - y2) + (x3 - x2) * (x3 - x2);
+		float area = a * b;
+		cout << "area of rectangle: " << area << endl;
+	}
+
+	void Triangle2::area() {
+		float h = 1;
+		float base = (y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1);
+		float area = 0.5 * base * h;
+		cout << "area of triangle: " << area << endl;
+	}
 
 }

@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <conio.h>
 #include <math.h>
+#include <string>
 
 namespace ChapterThirteen {
 	
@@ -18,5 +19,15 @@ namespace ChapterThirteen {
 	void Vbase3();
 
 	void Shape1();
+
+	void PointerToBase();
+
+	void TestPublic();
+
+	void TestOfEmployee2();
+
+	void TestVirtualOverridenFunc();
+
+	void TestStudents();
 
 }

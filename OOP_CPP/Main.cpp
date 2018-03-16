@@ -16,7 +16,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterThirteen::Shape1();
+	ChapterThirteen::TestStudents();
 	
 	Exit(); 
 	return 0;
