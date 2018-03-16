@@ -19,7 +19,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterThirteen::TestStudents();
+	ChapterFourteen::Fjoin1();
 	
 	Exit(); 
 	return 0;

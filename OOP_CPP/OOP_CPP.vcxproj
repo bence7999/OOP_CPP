@@ -113,10 +113,13 @@
   <ItemGroup>
     <ClCompile Include="ChapterEight.cpp" />
     <ClCompile Include="ChapterEleven.cpp" />
+    <ClCompile Include="ChapterFifteen.cpp" />
     <ClCompile Include="ChapterFive.cpp" />
+    <ClCompile Include="ChapterFourteen.cpp" />
     <ClCompile Include="ChapterNine.cpp" />
     <ClCompile Include="ChapterSeven.cpp" />
     <ClCompile Include="ChapterSix.cpp" />
+    <ClCompile Include="ChapterSixteen.cpp" />
     <ClCompile Include="ChapterTen.cpp" />
     <ClCompile Include="ChapterThirteen.cpp" />
     <ClCompile Include="ChapterThree.cpp" />
@@ -127,10 +130,13 @@
   <ItemGroup>
     <ClInclude Include="ChapterEight.h" />
     <ClInclude Include="ChapterEleven.h" />
+    <ClInclude Include="ChapterFifteen.h" />
     <ClInclude Include="ChapterFive.h" />
+    <ClInclude Include="ChapterFourteeen.h" />
     <ClInclude Include="ChapterNine.h" />
     <ClInclude Include="ChapterSeven.h" />
     <ClInclude Include="ChapterSix.h" />
+    <ClInclude Include="ChapterSixteen.h" />
     <ClInclude Include="ChapterTen.h" />
     <ClInclude Include="ChapterThirteen.h" />
     <ClInclude Include="ChapterThree.h" />
