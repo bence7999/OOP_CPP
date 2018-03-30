@@ -608,4 +608,642 @@ namespace ChapterFourteen {
 		cout << " Final file size in bytes : " << master << endl;
 		fout.close();
 	}
+
+	///////////////////////////
+	////       TASKS       ////
+	///////////////////////////
+
+	// 1. What are the various methods of classifying files ?
+
+	// 2. What are the advantages of binary file ?
+
+	// 3. What are the advantages of text files ?
+
+	// 4. What are the advantages of Random Access Files ?
+
+	// 5. What are the operations on files ? Illustrate with examples.
+
+	// 6. Describe various classes available for file operations.
+
+	// 7. How do we check for errors upon opening a file and output the correct error message ?
+
+	// 8. Write a program to read bio - data from the console and write to a file. Filename should be accepted from command line.
+
+	void ReadAndWriteBio() {
+		string filname;
+
+		cout << "give me the name of the output file: ";
+		cin >> filname;
+
+		ofstream f;
+		f.open(filname);
+
+		cout << "give me bio - data, to wirte to file: (q is end of data)" << endl;
+
+		string tmp;
+		while (true)
+		{
+			getline(cin, tmp);
+			if (tmp == "q")
+				break;
+			f << tmp << endl;
+		}
+		f.close();
+	}
+
+	// 9. Create a class “TextFile” for handling text files.
+
+	class TextFile
+	{
+	public:
+		TextFile();
+		TextFile(string);
+		~TextFile();
+		void read();
+		void write();
+		void rename(string);
+	private:
+		string name;
+		const string extension = "txt";
+	};
+
+	TextFile::TextFile()
+	{
+	}
+
+	TextFile::TextFile(string n) {
+		name = n;
+	}
+
+	TextFile::~TextFile()
+	{
+	}
+
+	void TextFile::rename(string new_name) {
+		name = new_name;
+	}
+
+	void TextFile::read() {
+		char str[80];
+		ifstream f(name + "." + extension);
+		if (!f) {
+			cout << "Cannot open " << name << "." << extension << " for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		while (!f.eof())
+		{
+			f >> str;
+			cout << str;
+		}
+		f.close();
+	}
+
+	void TextFile::write() {
+		string str;
+		ofstream f;
+		f.open(name + "." + extension);
+		while (true)
+		{
+			getline(cin, str);
+			if (str == "q")
+				break;
+			f << str << endl;
+		}
+		f.close();
+	}
+
+	void TestOfTextFile() {
+		TextFile *tf = new TextFile("sample");
+		tf->write();
+		tf->read();
+	}
+
+	// 10. Write a program to read your name roll number, address, physics, chemistry, and maths marks from keyboard and place it in file.
+
+	void NameAndEtcToFile() {
+		string name, address, tmp;
+		int roll_num, phy, chem, mat;
+
+		cout << "give me your name: ";
+		getline(cin, name);
+		cin.clear();
+		cout << name << endl;
+		cout << "give me your roll number: ";
+		cin >> roll_num;
+		getline(cin, tmp);
+		cin.clear();
+		cout << roll_num << endl;
+		cout << "give me your address: ";
+		getline(cin, address);
+		cin.clear();
+		cout << address << endl;
+		cout << "give me your physics, chemistry and math marks one by one: " << endl;
+		cin >> phy >> chem >> mat;
+
+		ofstream f("data.txt");
+		f << "Name of student: " << name << endl << "Roll number: " << roll_num << endl << "Address: " << address << endl;
+		f << "Subjets: " << endl << "physics: " << phy << endl << "chemistry: " << chem << endl << "maths: " << mat << endl;
+	}
+
+	// 11. Write a function named fcheck() that checks whether a file exists. The function should be passed a file name. If the file exists, the function should return a value of 1, otherwise a value 0.
+
+	bool fcheck(string fname) {
+		ifstream ifile(fname);
+		return (bool)ifile;
+	}
+
+	void TestCheck() {
+		string f1 = "input.txt";
+		string f2 = "point1.bf";
+		string f3 = "err.err";
+
+		cout << fcheck(f1) << endl;
+		cout << fcheck(f2) << endl;
+		cout << fcheck(f3) << endl;
+	}
+
+	// 12. a) Write a program to store the following numbers into a file named “result.dat” 16.25, 18.96, 22.34, 18.94, 17.42, 22.63
+
+	const string float_f= "result.dat";
+
+	void WriteFloat() {
+		const int len = 6;
+		float arr[len] = { 16.25, 18.96, 22.34, 18.94, 17.42, 22.63 };
+		ofstream f;
+		f.open(float_f);
+		f.precision(2);
+		f.setf(ios::fixed, ios::floatfield);
+		for (int i = 0; i < len; i++) {
+			f << arr[i] << endl;
+		}
+		f.close();
+	}
+
+	//     b) Write a program to read the data from “result.dat” and display the data. Additionally, the program should calculate the number of items and average of data.
+
+	void ReadFloat() {
+		ifstream f(float_f);
+		float num, sum = 0;
+		int item = 0;
+		if (!f)
+		{
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		while (f >> num)
+		{
+			cout << num << endl;
+			sum += num;
+			item++;
+		}
+		cout << "number of items: " << item << ", average: " << sum / item << endl;
+	}
+
+	void CheckFloat() {
+		WriteFloat();
+		ReadFloat();
+	}
+
+	// 13. Write a program that counts and prints the total number of characters(bytes) in a given file.The program should ask the user to enter the file name.
+
+	void PrintSize() {
+		string fname;
+		int sum = 0;
+		cout << "give me the name of the file: ";
+		cin >> fname;
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		ifstream f(fname);
+		char ch;
+		while (f.get(ch)) {
+			sum++;
+		}
+		cout << "total number of characters in the given file: " << sum << endl;
+		f.close();
+	}
+
+	// 14. Write a program that reads a text file and displays ‘n’ characters starting from any position in a file. 
+	//     The program should accept three user entered items : the name of the file, the offset of the first character to be read, and the number of the characters to be read.
+
+	void PrintNCharacters(string fname, int offset, int numOfItems) {
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		ifstream f(fname);
+		char ch;
+		f.seekg(offset);
+		while (f.get(ch) && numOfItems > 0) {
+			cout << ch;
+			numOfItems--;
+		}
+	}
+
+	void TestCharOffset() {
+		PrintNCharacters("input.txt", 4, 15);
+	}
+
+	// 15. Assume that a data file is a large text file. Write a program that will read integer n, and display nth line on the screen.
+	//     The above action should be in a loop. A negative number should terminate the loop.
+
+	void ReadNthLine(int n) {
+		string fname = "test.txt";
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		string tmp;
+		ifstream f(fname);
+		for (int i = 0; i < n; ++i)
+			getline(f, tmp);
+
+		getline(f, tmp);
+		cout << tmp << endl;
+	}
+
+	void TestReadLine() {
+		ReadNthLine(5);
+		ReadNthLine(13);
+		ReadNthLine(20);
+		ReadNthLine(2);
+	}
+
+	// 16. Write a C++ program “displ.cpp” to display the contents of a random file beginning with the location you specify on the command line.
+
+	void getDir(const char* d, vector<string> & f)
+	{
+		FILE* pipe = NULL;
+		string pCmd = "dir /B /S " + string(d);
+		char buf[256];
+
+		if (NULL == (pipe = _popen(pCmd.c_str(), "rt")))
+		{
+			cout << "Shit" << endl;
+			return;
+		}
+		while (!feof(pipe))
+		{
+			if (fgets(buf, 256, pipe) != NULL)
+			{
+				f.push_back(string(buf));
+			}
+
+		}
+		_pclose(pipe);
+	}
+
+	void Displ(int argc, char* argv[]) {
+		time_t* t = new time_t;
+		srand(std::time(t));
+
+		vector<string> files;
+
+		getDir(argv[1], files);
+
+		//cout << files.size() << endl;
+
+		//cout << "Printing Dir" << endl;
+		//ector<string>::const_iterator it = files.begin();
+
+		int random_variable = rand();
+		int file_num = random_variable % 25;
+		string fname = files[file_num];
+		fname.erase(fname.find_last_not_of(" \n\r\t") + 1);
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		string str;
+		ifstream f(fname);
+		while (!f.eof())
+		{
+			f >> str;
+			cout << str;
+		}
+		f.close();
+
+		/*while (it != files.end())
+		{
+			cout << *it << endl << endl;
+			it++;
+		}*/
+	}
+
+	// 17. Write a program to create a data file containing the following information:
+
+	class DataFile
+	{
+	public:
+		DataFile();
+		DataFile(int, int, int, string);
+		~DataFile();
+
+	private:
+		int Sr_no, Merit_no, total_marks;
+		string name;
+	};
+
+	DataFile::DataFile()
+	{
+		Sr_no = 0;
+		Merit_no = 0;
+		total_marks = 0;
+		name = "";
+	}
+
+	DataFile::DataFile(int sr, int merit, int total, string n) {
+		Sr_no = sr;
+		Merit_no = merit;
+		total_marks = total;
+		name = n;
+	}
+
+	DataFile::~DataFile()
+	{
+	}
+
+	void StoreDataFile() {
+		DataFile* df[3];
+		df[0] = new DataFile(1, 03, 92, "Sunil");
+		df[1] = new DataFile(2, 02, 98, "Anil");
+		df[2] = new DataFile(3, 01, 99, "Mahesh");
+
+		ofstream f("DataFile.data", ios::binary);
+		for (int i = 0; i < 3; i++) {
+			f.write((char *)& df[i], sizeof(DataFile));
+		}
+		f.close();
+	}
+
+	// 18. Write a program to generate directory of doctors in Mumbai city. The entries must be name of the doctor, telephone number of doctor, and his specialization. Generate suitable array. 
+	//     The member elements should be accessed by pointer type operator.
+
+	class Doctor
+	{
+	public:
+		Doctor();
+		Doctor(string, string, int);
+		~Doctor();
+
+	private:
+		string name, specialization;
+		long telephon;
+		string place = "Mumbai";
+	};
+
+	Doctor::Doctor()
+	{
+		name = ""; 
+		specialization = "";
+		telephon = 0;
+	}
+
+	Doctor::Doctor(string n, string s, int t) {
+		name = n;
+		specialization = s;
+		telephon = t;
+	}
+
+	Doctor::~Doctor()
+	{
+	}
+
+	void DoctorDirectory() {
+		const int max = 100;
+		Doctor* Directory[max];
+	}
+
+	// 19. Write a program to encrypt and decrypt text files such that encrypted file contains only printable characters. Assume that input also consists of only printable characters.
+
+	void EncryptText(string &fname) {
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		ifstream f(fname);
+		ofstream f2("enc_t.txt");
+		char x, y;
+		while (f.get(x))
+		{
+			y = ~x;
+			f2.put(y);
+		}
+		f.close();
+		f2.close();
+	}
+
+	void DescriptText(string &fname) {
+		if (!fcheck(fname)) {
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		ifstream f(fname);
+		char x, y;
+		while (f.get(x))
+		{
+			y = ~x;
+			cout << y;
+		}
+		f.close();
+	}
+
+	void CheckEncDescText() {
+		string fname = "sample.txt";
+		EncryptText(fname);
+		string dfname = "enc_t.txt";
+		DescriptText(dfname);
+	}
+
+	// 20. Write an interactive, file-oriented program that will maintain a list of names, address and telephone numbers in alphabetic order. 
+	//     Process the information associated with each name as a separate record. Represent each record as a structure. Include a menu that will allow the user to select any of the following features.
+	//     1. Add a new record
+	//     2. Delete a record
+	//     3. Modify an existing record
+	//     4. Retrieve and display an entire record for a given name
+	//     5. Generate a complete list of all names, addresses, and telephone numbers
+
+	struct MemberData
+	{
+		string name;
+		string address;
+		long telephone;
+	};
+
+	MemberData* addNewRecord() {
+		string name, address, tmp;
+		float telephone;
+		getline(cin, tmp);
+		cout << "\nAdd new record:\n  give me a name: ";
+		getline(cin, name);
+		cout << "  give me an address: ";
+		getline(cin, address);
+		cout << "  give me a telephone number: ";
+		cin >> telephone;
+		cout << endl;
+
+		MemberData* new_data = new MemberData();
+		new_data->name = name;
+		new_data->address = address;
+		new_data->telephone = telephone;
+		return new_data;
+	}
+
+	void deleteRecord(MemberData* md[]) {
+
+	}
+
+	void modifyRecord(MemberData* md[], int &size) {
+		string tmp;
+		cout << "give me a value of a member from the element what you want to modify: ";
+		cin >> tmp;
+		MemberData* local[100];
+		int tmp_size = 0;
+		for (int i = 0; i < size; i++) {
+			if (md[i]->name.find(tmp) != string::npos) {
+				local[tmp_size] = md[i];
+				tmp_size++;
+				continue;
+			}
+			else if (md[i]->address.find(tmp) != string::npos) {
+				local[tmp_size] = md[i];
+				tmp_size++;
+				continue;
+			}
+			else if (to_string(md[i]->telephone).find(tmp) != string::npos) {
+				local[tmp_size] = md[i];
+				tmp_size++;
+				continue;
+			}
+		}
+		int index = -1;
+		if (tmp_size > 1) {
+			for (int i = 0; i < tmp_size; i++) {
+				cout << 1 << ". Name: " << local[i]->name << ", Address: " << local[i]->address << ", telephone number: " << local[i]->telephone << endl;
+			}
+			cout << "give me the index of requuired element: ";
+			cin >> index;
+			while (true)
+			{
+				if (index > tmp_size) {
+					cout << "index error, try again: ";
+					cin >> index;
+				}
+				else {
+					break;
+				}
+			}
+			
+		}
+		int memb = -1;
+		cout << "what member what you want to modify:\n  1. name, 2. address, 3. telephone number, 0. end of modify\nnum:";
+		cin >> memb;
+		string str;
+		long lng;
+		switch (memb)
+		{
+		case 1:
+			cout << "give me the new name:";
+			getline(cin, str);
+			local[index]->name = str;
+			break;
+		case 2:
+			cout << "give me the new name:";
+			getline(cin, str);
+			local[index]->address = str;
+			break;
+		case 3:
+			cout << "give me the new phone number:";
+			cin >> lng;
+			local[index]->telephone = lng;
+			break;
+		default:
+			cout << "wrong number!";
+			break;
+		}
+
+	}
+
+	void reseveRecord(MemberData* md[]) {
+		string tmp;
+		cout << "give me a name, what you want to disply: ";
+		getline(cin, tmp);
+	}
+
+	void dispalyAllList(MemberData* md[], int& size) {
+		if (size <= 0) {
+			cout << "the contact list is empty!" << endl << endl;
+			return;
+		}
+		for (int i = 0; i < size; i++) {
+			cout << i+1 << ". Name: " << md[i]->name << ", address: " << md[i]->address << ", phone number: " << md[i]->telephone << "!" << endl;
+		}
+		cout << "end of contact list!" << endl << endl;
+	}
+
+	void FileOrentedProgram() {
+		const int max = 100;
+		int size = 0;
+		MemberData* contact[max];
+		bool exit = true;
+		int next = -1;
+		string introduction = "For new record press 1\nFor delete record press 2\nFor modify record press 3\nFor retrieve and disply an etire by name press 4\nFor generate a complete list for all data press 5\nFor exit press 0\n\n" ;
+		
+		while (exit)
+		{
+			cout << introduction << endl << "cmd: ";
+			cin >> next;
+			switch (next)
+			{
+			case 0:
+				exit = false;
+				break;
+			case 1:
+				if (size < max) {
+					contact[size] = addNewRecord();
+					size++;
+				}
+				else {
+					cout << "the list is full!" << endl;
+				}
+				break;
+			case 2:
+				deleteRecord(contact);
+				break; 
+			case 3:
+				modifyRecord(contact, size);
+				break; 
+			case 4:
+				reseveRecord(contact);
+				break;
+			case 5:
+				dispalyAllList(contact, size);
+				break;
+			default:
+				cout << "Wrong number, try again!" << endl << endl;
+				break;
+			}
+		}
+		
+	}
+
+	// 21. Modify the programs split.cpp and fjoin1.cpp with following specifications.
+	//     1. The files split will be in separate sub-directory.
+	//     2. A file “info.txt” stores necessary information.
+	//     3. This information should be used while joining files.
+
+
+
+	// 22. Consider two large data files both containing values from 1 to 1000000. The first one is a text file while other is a binary file. 
+	//     Use class BPtimer to compare times to read these files. (Hint – First write a pilot program to create these data files.)
+
 }

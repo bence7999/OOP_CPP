@@ -1,0 +1,7 @@
+Name of student: alma alma
+Roll number: 34
+Address: Bp Marv
+Subjets: 
+physics: 2
+chemistry: 3
+maths: 4
