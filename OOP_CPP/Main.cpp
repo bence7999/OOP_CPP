@@ -19,7 +19,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterFourteen::FileOrentedProgram();
+	ChapterFifteen::Tinher1();
 	
 	Exit(); 
 	return 0;
