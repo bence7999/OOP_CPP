@@ -19,7 +19,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterFifteen::TestCicularQueue();
+	ChapterSixteen::Ptomeml();
 	
 	Exit(); 
 	return 0;

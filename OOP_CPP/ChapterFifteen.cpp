@@ -1141,7 +1141,6 @@ namespace ChapterFifteen {
 	bool CircularQueue<T>::isEmpty() {
 		if (front == -1 && rear == -1)
 			return true;
-		else if()
 		return false;
 	}
 
