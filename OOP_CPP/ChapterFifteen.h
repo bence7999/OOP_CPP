@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <iomanip>
 
 namespace ChapterFifteen {
 
@@ -20,5 +21,19 @@ namespace ChapterFifteen {
 	void Tpower3();
 
 	void Tinher1();
+
+	void FindSmallestInArray();
+
+	void TestSwapping();
+
+	void TestMatrixAdd();
+
+	void TestLinketList();
+
+	void TestObjAddition();
+
+	void TestBinaryBtree();
+
+	void TestCicularQueue();
 
 }

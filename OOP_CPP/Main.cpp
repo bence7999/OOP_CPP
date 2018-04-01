@@ -19,7 +19,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterFifteen::Tinher1();
+	ChapterFifteen::TestCicularQueue();
 	
 	Exit(); 
 	return 0;
