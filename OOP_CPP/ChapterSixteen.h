@@ -2,6 +2,8 @@
 #include <conio.h>
 #include <stdarg.h>
 #include <iomanip>
+#include <time.h>
+#include <string>
 
 namespace ChapterSixteen {
 
@@ -26,5 +28,11 @@ namespace ChapterSixteen {
 	void Sro1();
 
 	void Ptomeml();
+
+	void TestOwnEncript();
+
+	void IntToHexAndOctal();
+
+	void BitOffloat();
 
 }

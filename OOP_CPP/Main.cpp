@@ -19,7 +19,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterSixteen::Ptomeml();
+	ChapterSixteen::BitOffloat();
 	
 	Exit(); 
 	return 0;

@@ -484,6 +484,237 @@ namespace ChapterSixteen {
 	////       TASKS       ////
 	///////////////////////////
 
+	// 1. What are the differences between pointers to constants and constant pointers? Give examples.
 
+	// 2. What is the use of declaring an object as constant?
+
+	// 3. What is the use of declaring a data member as constant? How is such member initialized?
+
+	// 4. What advantage one gets of declaring a method of a class as constant?
+
+	// 5. Study any one standard encryption algorithm on your own.
+
+	string crypt(const string message, bool encrypt) {
+		srand(time(0));
+		static int secret = rand() % 32000;
+		string output;
+		int i = 0, a = 0, b = 1, c = 0;
+		for (i = 0; i < message.size(); ++i) {
+			if (encrypt) {
+				output += ((int)message[i]) + (secret + c);
+			}
+			else {
+				output += ((int)message[i]) - (secret + c);
+			}
+
+			c = a + b;
+			a = b;
+			b = c;
+		}
+		
+		return output;
+	}
+
+	void TestOwnEncript() {
+		string message("Lorem ipsum dolor sit amet consectetur");
+		string output(crypt(message, false));
+		string result(crypt(output, true));
+
+		cout << message << endl << endl << output << endl << endl << result << endl;
+	}
+
+	// 6. Write a program to print a given long integer in hexadecimal and octal number system. (Hint:- Use bit manipulation technique to separate group of bits).
+
+	typedef char unit[33];
+
+	void Print4Byte(char* str) {
+		for (int i = 0; i < 32; i++) {
+			if (i % 8 == 0)
+				cout << " ";
+			cout << str[i];
+		}
+		cout << endl;
+	}
+
+	void PrintHexa(int* hexa) {
+		cout << " ";
+		for (int i = 0; i < 9; i++) {
+			if (hexa[i] == 0)
+				break;
+			else {
+				cout << uppercase << hex << hexa[i];
+			}
+		}
+		cout << endl;
+	}
+
+	int* toHexa(long n) {
+		int a[9] = {-1};
+		int i = 0;
+		int dec = n;
+		while (dec != 0)
+		{
+			a[i] = dec % 16;
+			dec = dec / 16;
+			i++;
+		}
+		return a;
+	}
+
+	int toOcta(long n) {
+		int dec = n;
+		int rem, i = 1, octalNumber = 0;
+		while (dec != 0)
+		{
+			rem = dec % 8;
+			dec /= 8;
+			octalNumber += rem * i;
+			i *= 10;
+		}
+		return octalNumber;
+	}
+
+	char* toBin(long n) {
+		int i;
+		int k = n;
+		unit str;
+		str[32] = '/0';
+		for (i = 31; i >= 0; i--)
+		{
+			str[i] = (k % 2) ? '1' : '0';
+			k = k / 2;
+		}
+		return str;
+	}
+
+	void IntToHexAndOctal() {
+		unit tmp;
+		long num = 1234567;
+		char* bin = toBin(num);
+		for (int i = 0; i < 33; i++)
+			tmp[i] = bin[i];
+		Print4Byte(tmp);
+		int lst[9];
+		int* ret = toHexa(77);
+		for (int i = 0; i < 9; i++)
+			lst[i] = ret[i];
+		PrintHexa(lst);
+		cout << " " << dec << toOcta(77) << endl;
+	}
+
+	// 7. Write a program to print a bit pattern of a float value. (Hint:- Use technique of Program 16.6 bitman2.cpp. Also use a suitable union to convert float to array of bytes.)
+
+	typedef char BYTE2[8];
+	typedef char TWOBYTE[16];
+	typedef char THREEBYTE[24];
+	typedef char FOURBYTE[32];
+
+	char* getNumSectionInBin(float num) {
+		BYTE2 byte;
+		int intpart = (int)num;
+		for (int i = 0; i < 8; i++)
+		{
+			byte[i] = intpart % 2;
+			intpart /= 2;
+		}
+		return byte;
+	}
+
+	char* getFracSectionInBin(float frac) {
+		TWOBYTE twobyte;
+		float sum = 0;
+		for (int i = 1; i < 17; i++) {
+			double power = 1 / pow(2, i);
+			if (sum + power < frac) {
+				twobyte[i-1] = 1;
+				sum += power;
+			}
+			else {
+				twobyte[i-1] = 0;
+			}
+		}
+		return twobyte;
+	}
+
+	int getBinaryPoint(BYTE2 b) {
+		int offset = 0;
+		for (int i = 7; i >= 0; i--) {
+			if (b[i] == 1)
+				break;
+			else
+				offset++;
+		}
+		return 7 - offset;
+	}
+
+	char* getExponent(int binPoint) {
+		int p = 127 + binPoint;
+		char* ret = getNumSectionInBin((float)p);
+		BYTE2 exp;
+		for (int i = 0; i < 8; i++) {
+			exp[i] = ret[i];
+		}
+		return exp;
+	}
+
+	void BitOffloat() {
+		FOURBYTE binary;
+		float intpart, fractpart;
+		char sign = 0;
+
+		float a = 1.4;
+
+		if (a < 0)
+			sign = 1;
+
+		binary[0] = sign;
+
+		fractpart = modf(a, &intpart);
+
+		char* ret = getNumSectionInBin(intpart);
+		BYTE2 num;
+		for (int i = 0; i < 8; i++) {
+			num[i] = ret[i];
+		}
+
+		int binPoint = getBinaryPoint(num);
+
+		char* ret2 = getFracSectionInBin(fractpart);
+		TWOBYTE frac;
+		for (int i = 0; i < 16; i++) {
+			frac[i] = ret2[i];
+		}
+
+		char* ret3 = getExponent(binPoint);
+		BYTE2 exponenet;
+		for (int i = 0; i < 8; i++) {
+			exponenet[i] = ret3[i];
+		}
+		for (int i = 1; i < 9; i++)
+			binary[i] = exponenet[7 - (i - 1)];
+
+		THREEBYTE threeb;
+		for (int i = 0; i < 8; i++)
+			threeb[i] = num[7 - i];
+		for (int i = 0; i < 16; i++)
+			threeb[8 + i] = frac[15 - i];
+
+		int offs = 0;
+		for (int i = 7; i >= 0; i--) {
+			if (num[i] == 1)
+				break;
+			else
+			{
+				offs++;
+			}
+		}
+
+		offs++; // elim leading 1
+
+		for (int i = offs; i < 24; i++) {
+			binary[9+i-offs] = threeb[i];
+		}
+
+	}
 
 }
