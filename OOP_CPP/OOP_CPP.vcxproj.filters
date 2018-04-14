@@ -60,6 +60,15 @@
     <ClCompile Include="ChapterSixteen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ChapterSeventeen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChapterEighteen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChapterNineteen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterTwo.h">
@@ -102,6 +111,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChapterFourteeen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterSeventeen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterEighteen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChapterNineteen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

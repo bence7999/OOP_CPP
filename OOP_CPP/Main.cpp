@@ -14,12 +14,15 @@
 #include "ChapterFourteeen.h"
 #include "ChapterFifteen.h"
 #include "ChapterSixteen.h"
+#include "ChapterSeventeen.h"
+#include "ChapterEighteen.h"
+#include "ChapterNineteen.h"
 
 void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterSixteen::BitOffloat();
+	ChapterEighteen::Excep7C();
 	
 	Exit(); 
 	return 0;

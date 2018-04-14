@@ -112,12 +112,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChapterEight.cpp" />
+    <ClCompile Include="ChapterEighteen.cpp" />
     <ClCompile Include="ChapterEleven.cpp" />
     <ClCompile Include="ChapterFifteen.cpp" />
     <ClCompile Include="ChapterFive.cpp" />
     <ClCompile Include="ChapterFourteen.cpp" />
     <ClCompile Include="ChapterNine.cpp" />
+    <ClCompile Include="ChapterNineteen.cpp" />
     <ClCompile Include="ChapterSeven.cpp" />
+    <ClCompile Include="ChapterSeventeen.cpp" />
     <ClCompile Include="ChapterSix.cpp" />
     <ClCompile Include="ChapterSixteen.cpp" />
     <ClCompile Include="ChapterTen.cpp" />
@@ -129,12 +132,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterEight.h" />
+    <ClInclude Include="ChapterEighteen.h" />
     <ClInclude Include="ChapterEleven.h" />
     <ClInclude Include="ChapterFifteen.h" />
     <ClInclude Include="ChapterFive.h" />
     <ClInclude Include="ChapterFourteeen.h" />
     <ClInclude Include="ChapterNine.h" />
+    <ClInclude Include="ChapterNineteen.h" />
     <ClInclude Include="ChapterSeven.h" />
+    <ClInclude Include="ChapterSeventeen.h" />
     <ClInclude Include="ChapterSix.h" />
     <ClInclude Include="ChapterSixteen.h" />
     <ClInclude Include="ChapterTen.h" />
