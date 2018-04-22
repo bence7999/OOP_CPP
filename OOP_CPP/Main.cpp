@@ -22,7 +22,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterEighteen::ComplexTest();
+	ChapterNineteen::Typeid2();
 	
 	Exit(); 
 	return 0;
