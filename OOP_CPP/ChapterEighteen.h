@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <istream>
+#include <conio.h>
+#include <string>
 
 namespace ChapterEighteen {
 
@@ -10,5 +13,11 @@ namespace ChapterEighteen {
 	void Excep5();
 
 	void Excep7C();
+
+	void MultipleCatch();
+
+	void FileException();
+
+	void ComplexTest();
 
 }
