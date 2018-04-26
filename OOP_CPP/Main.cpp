@@ -17,12 +17,15 @@
 #include "ChapterSeventeen.h"
 #include "ChapterEighteen.h"
 #include "ChapterNineteen.h"
+#include "ChapterTwenty.h"
+#include "ChapterTwentyone.h"
+#include "ChapterTwentytwo.h"
 
 void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterNineteen::InFixToPostFix();
+	ChapterTwenty::Formatted();
 	
 	Exit(); 
 	return 0;

@@ -127,6 +127,9 @@
     <ClCompile Include="ChapterThirteen.cpp" />
     <ClCompile Include="ChapterThree.cpp" />
     <ClCompile Include="ChapterTwelve.cpp" />
+    <ClCompile Include="ChapterTwenty.cpp" />
+    <ClCompile Include="ChapterTwentyone.cpp" />
+    <ClCompile Include="ChapterTwentytwo.cpp" />
     <ClCompile Include="ChapterTwo.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -147,6 +150,9 @@
     <ClInclude Include="ChapterThirteen.h" />
     <ClInclude Include="ChapterThree.h" />
     <ClInclude Include="ChapterTwelve.h" />
+    <ClInclude Include="ChapterTwenty.h" />
+    <ClInclude Include="ChapterTwentyone.h" />
+    <ClInclude Include="ChapterTwentytwo.h" />
     <ClInclude Include="ChapterTwo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

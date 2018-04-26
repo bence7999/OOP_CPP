@@ -2,4 +2,8 @@
 
 namespace ChapterTwenty {
 
+	void NoFormatted();
+
+	void Formatted();
+
 }
