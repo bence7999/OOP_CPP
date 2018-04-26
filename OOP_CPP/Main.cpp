@@ -22,7 +22,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterNineteen::Typeid2();
+	ChapterNineteen::InFixToPostFix();
 	
 	Exit(); 
 	return 0;

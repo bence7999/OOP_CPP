@@ -1,4 +1,4 @@
-#include "ChapterNineteen.h"
+﻿#include "ChapterNineteen.h"
 
 using namespace std;
 
@@ -182,7 +182,7 @@ namespace ChapterNineteen {
 	/// 19.10 Function objects in use 
 	// Write a program to demonstrate use of function object.
 
-	const int six = 6;
+	const int sixx = 6;
 
 	template<class T>
 	class lessThan
@@ -219,8 +219,8 @@ namespace ChapterNineteen {
 		*/
 		cout << "<-- - funcobj1.cpp--->" << endl;
 		int box[] = { 3, 5, 1, 7, 2, 9 };
-		sort1(box, six, lessThan<int>());
-		for (k = 0; k < six; k++)
+		sort1(box, sixx, lessThan<int>());
+		for (k = 0; k < sixx; k++)
 			cout << " " << box[k];
 		cout << endl;
 	}
@@ -299,6 +299,275 @@ namespace ChapterNineteen {
 	////       TASKS       ////
 	/////////////////////////// 
 
+	// 1. Write a program to read a small text file and create a files “words.txt” which contains all the words from the given file. Use type string.
 
+	void FileReadWriteByString() {
+		ifstream f1("input.txt");
+		if (!f1)
+		{
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		ofstream f2("words.txt");
+		string str;
+		while (getline(f1, str))
+		{
+			f2 << str << endl;
+		}
+		f1.close();
+		f2.close();
+
+	}
+
+	// 2. Write a program to read a file of words, and prepare a output file “sorted.text” where words are sorted alphabetically. (Place only one word on one line in the output.)
+
+	const int max = 200;
+
+	void ReadAndWriteAphabetic() {
+		string array[max] = {""};
+
+		ifstream f1("word_order.txt");
+		if (!f1)
+		{
+			cout << "Cannot open input.txt for input" << endl;
+			cout << " quitting the program";
+			exit(1);
+		}
+		string word;
+		int i = 0;
+		while (f1 >> word)
+		{
+			array[i] = word;
+			i++;
+		}
+		sort(array, array + max);
+		ofstream f2("ordered_words.txt");
+		for (int i = 0; i < max; i++) {
+			if (array[i] != "")
+				f2 << array[i] << endl;
+		}
+	}
+
+	// 3. Write a program to encrypt a text file such that output contains only alphabets and numbers and punctuators (no special characters). Assume similar condition on input.
+
+	void EncriyptFile() {
+
+	}
+
+	// 4. List the facilities from STL from any two different implementations of C++ (Turbo C++ 4.5, C++ builder, VC++, GNU C++ for Linux etc.)
+
+	// 5. Assume that type bool is not available in particular Version of C++ you are using. Write a program to define a class BOOL. An object of this class should behave as if a variable of type bool.
+
+	class WrongType : public exception
+	{
+	public:
+		char* what()
+		{
+			return "Unknown Type Exception!";
+		};
+	};
+
+	class BOOL
+	{
+	public:
+		BOOL();
+		BOOL(int);
+		BOOL(bool);
+		~BOOL();
+		friend ostream& operator<<(ostream &, BOOL);
+	private:
+		int boolean;
+	};
+
+	BOOL::BOOL()
+	{
+		boolean = 0;
+	}
+
+	BOOL::BOOL(int i) {
+		if (i < 1)
+			boolean = 0;
+		else
+			boolean = 1;
+	}
+
+	BOOL::BOOL(bool b) {
+		boolean = b;
+	}
+
+	BOOL::~BOOL()
+	{
+	}
+
+	ostream & operator<< (ostream & temp, BOOL b)
+	{
+		temp << b.boolean;
+		return temp;
+	}
+
+	void TestOfBOOL() {
+		BOOL a = 1;
+		BOOL b = true;
+		cout << a << endl;
+		cout << b << endl;
+		cout << true << endl;
+	}
+
+	// 5. Develop application program using any two of the following STL algorithms:
+	//    1. random_shuffle
+	//    2. search
+	//    3. merge
+	//    4. find
+	//    5. rotate
+
+	// 6. Define a class Card (for a playing card) and use STL function sort to sort a deck of cards.
+
+	enum rank_map {
+		two = 2, three = 3, four = 4, five = 5, six = 6, seven = 7, eight = 8, nine = 9, ten = 10, Jack = 10, Queen = 10, King = 10, Ace = 11
+	};
+
+	const string color[4] = { "Clubs", "Diamonds", "Hearts", "Spades" };
+	const string rank[13] = { "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "Jack", "Queen", "King", "Ace" };
+
+	class Card
+	{
+	public:
+		Card(string, string);
+		~Card();
+		string get_color() {
+			return color;
+		}
+		string get_rank() {
+			return rank;
+		}
+	private:
+		string color;
+		string rank;
+	};
+
+	Card::Card(string c, string r)
+	{
+		color = c;
+		rank = r;
+	}
+
+	Card::~Card()
+	{
+	}
+
+	class Deck
+	{
+	public:
+		Deck();
+		~Deck();
+		Card* deck[52];
+		void sort();
+		void exchange(int, int);
+	private:
+
+	};
+
+	Deck::Deck()
+	{
+		int num = 0;
+		for (int c = 0; c < 4; c++) {
+			for (int r = 0; r < 13; r++){
+				deck[num] = new Card(color[c], rank[r]);
+				num++;
+			}
+		}
+	}
+
+	Deck::~Deck()
+	{
+	}
+
+	void Deck::sort() {
+		srand(time(NULL));
+		for (int i = 0; i < 500; i++) {
+			int num1 = rand() % rand();
+			int num2 = rand() % rand();
+			num1 = num1 % 52;
+			num2 = num2 % 52;
+			this->exchange(num1, num2);
+		}
+		cout << endl;
+	}
+
+	void Deck::exchange(int num1, int num2) {
+		Card *tmp = this->deck[num1];
+		this->deck[num1] = this->deck[num2];
+		this->deck[num2] = tmp;
+	}
+
+	void CardGame() {
+		Deck deck;
+		deck.sort();
+		for (int i = 0; i < 52; i++) {
+			cout << deck.deck[i]->get_color() << " : " << deck.deck[i]->get_rank() << endl;
+		}
+		
+	}
+
+	// 8. Develop a program to covert an infix expression into postfix expression using vector stack from STL.
+
+	void InFixToPostFix() {
+		stack<char> stack;
+		vector<char> output;
+
+		map<char, int> rank;
+		rank['*'] = 3;
+		rank['/'] = 3;
+		rank['+'] = 2;
+		rank['-'] = 2;
+		rank['('] = 1;
+
+		string num_str = "123456790";
+
+		string expression = "(1+2)*(3+4)";
+		//cout << "give me the expression" << endl;
+		//cin >> expression;
+
+		string::iterator it;
+
+		for (it = expression.begin(); it != expression.end(); it++) {
+			if (num_str.find(*it) != string::npos) {
+				output.push_back(*it);
+			}
+			else if (*it == '(') {
+				stack.push(*it);
+			}
+			else if (*it == ')') {
+				char tmp = stack.top();
+				stack.pop();
+				while (tmp != '(')
+				{
+					output.push_back(tmp);
+					tmp = stack.top();
+					stack.pop();
+				}
+			}
+			else {
+				while (!stack.empty() && rank[stack.top()] >= rank[*it])
+				{
+					char tmp = stack.top();
+					output.push_back(tmp);
+					stack.pop();
+				}
+				stack.push(*it);
+			}
+		}
+		while (!stack.empty())
+		{
+			char tmp = stack.top();
+			stack.pop();
+			output.push_back(tmp);
+		}
+		for (vector<char>::iterator it = output.begin(); it != output.end(); ++it) {
+			cout << *it;
+		}
+		cout << endl;
+	}
 
 }

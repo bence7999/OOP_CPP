@@ -2,6 +2,14 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <stdlib.h>
+#include <fstream>
+#include <algorithm>
+#include <time.h>
+#include <ctime>
+#include <stack>
+#include <vector>
+#include <map>
 
 namespace ChapterNineteen {
 
@@ -27,4 +35,13 @@ namespace ChapterNineteen {
 
 	void Typeid2();
 
+	void FileReadWriteByString();
+
+	void ReadAndWriteAphabetic();
+
+	void TestOfBOOL();
+
+	void CardGame();
+
+	void InFixToPostFix();
 }
