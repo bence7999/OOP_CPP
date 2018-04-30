@@ -134,6 +134,10 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="astro.h" />
+    <ClInclude Include="attrib.h" />
+    <ClInclude Include="bitgraph.h" />
+    <ClInclude Include="canvas.h" />
     <ClInclude Include="ChapterEight.h" />
     <ClInclude Include="ChapterEighteen.h" />
     <ClInclude Include="ChapterEleven.h" />
@@ -154,6 +158,11 @@
     <ClInclude Include="ChapterTwentyone.h" />
     <ClInclude Include="ChapterTwentytwo.h" />
     <ClInclude Include="ChapterTwo.h" />
+    <ClInclude Include="cursor1.h" />
+    <ClInclude Include="keys.h" />
+    <ClInclude Include="Linked.h" />
+    <ClInclude Include="LinkedT.h" />
+    <ClInclude Include="Matrix4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

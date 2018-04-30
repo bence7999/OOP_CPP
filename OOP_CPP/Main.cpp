@@ -25,7 +25,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTwenty::Formatted();
+	ChapterTwentyone::Bitmap();
 	
 	Exit(); 
 	return 0;

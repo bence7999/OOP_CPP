@@ -140,5 +140,32 @@
     <ClInclude Include="ChapterTwentytwo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Linked.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="astro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="attrib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="keys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bitgraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cursor1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="canvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
