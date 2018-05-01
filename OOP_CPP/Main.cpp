@@ -25,7 +25,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTwentyone::Bitmap();
+	ChapterTwo::Prime1();
 	
 	Exit(); 
 	return 0;
@@ -42,4 +42,4 @@ void Exit() {
 		if (*cstr == 'y')
 			break;
 	}
-}
+}  
