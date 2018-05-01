@@ -459,7 +459,7 @@ namespace ChapterThirteen {
 
 	// circle rectangle and triangle. Perimeter of these shapes.
 
-	#define M_PI       3.14159265358979323846   // pi
+	// #define M_PI       3.14159265358979323846   // pi
 
 	class Shape
 	{
@@ -529,8 +529,8 @@ namespace ChapterThirteen {
 
 	void Circle::perimeter()
 	{
-		peri = 2 * M_PI * rad;
-		cout << "perimeter of Circle is : " << peri << endl;
+		//peri = 2 * geo::M_PI * rad;
+		//cout << "perimeter of Circle is : " << peri << endl;
 	}
 
 	Triangle::Triangle(int a, int b, int c, int d, int e, int f)
@@ -1098,8 +1098,8 @@ namespace ChapterThirteen {
 	}
 
 	void Circle2::area() {
-		float area = radius * radius * M_PI;
-		cout << "area of circle: " << area << endl;
+		//float area = radius * radius * M_PI;
+		//cout << "area of circle: " << area << endl;
 	}
 
 	void Rectangle2::area() {

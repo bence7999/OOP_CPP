@@ -1,4 +1,6 @@
 ﻿#include "ChapterTwo.h"
+#include "geomatics.h"
+#include "common.h"
 
 using namespace std;
 
@@ -168,8 +170,8 @@ namespace ChapterTwo {
 
 	void Sinx() {
 		int i;
-		float sum = 0, term = 1;
-		float x, y;
+		double sum = 0, term = 1;
+		double x, y;
 		cout << "---sinx.cpp--->" << endl;
 		cout << "Give X between 0 to 90 degrees : ";
 		cin >> y;
@@ -192,7 +194,7 @@ namespace ChapterTwo {
 	void Accuracy() {
 		cout << "<---accuracy.cpp--->" << endl;
 		long n;
-		float i, j;
+		double i, j;
 		i = .000001;
 		j = 0.0;
 		for (n = 0; n<1000000L; n++)
@@ -227,163 +229,168 @@ namespace ChapterTwo {
 	////       TASKS       ////
 	///////////////////////////
 
-}
+	// 1. Explain why language supports type double and long when type int and float exists.
 
+	// 2. What are the typical uses of type reference?
 
-// 1. Explain why language supports type double and long when type int and float exists.
+	// 3. Explain the two-step process of automatic type conversion during evaluation of expressions.
 
-// 2. What are the typical uses of type reference?
+	// 4. Describe the syntax and state the advantage of typedef facility
 
-// 3. Explain the two-step process of automatic type conversion during evaluation of expressions.
+	// 5. Write a note on selecting an appropriate control structure for a particular task.
 
-// 4. Describe the syntax and state the advantage of typedef facility
+	// 6. Explain what is meant by term block. Comment on the scope of variables declared in a block.
 
-// 5. Write a note on selecting an appropriate control structure for a particular task.
+	// 7. Read five real numbers (float) and find its average.
 
-// 6. Explain what is meant by term block. Comment on the scope of variables declared in a block.
+	void AverageOfFloats() {
+		float sum = 0;
+		float loc;
 
-// 7. Read five real numbers (float) and find its average.
-
-float AverageOfFloats() {
-	float sum = 0;
-	float loc;
+		cout << "give me 5 float number: " << endl;
 	
-	for (int i = 0; i < 5; i++) {
-		cin >> loc;
-		sum += loc;
+		for (int i = 0; i < 5; i++) {
+			cin >> loc;
+			sum += loc;
+		}
+
+		cout << "average is: " <<  sum / 5 << endl;
 	}
 
-	return sum / 5;
-}
+	// 8. Write a program to accept a character from the user in variable ch and display its ASCII value.
 
-// 8. Write a program to accept a character from the user in variable ch and display its ASCII value.
+	void WriteASCII() {
+		char ch;
+		cout << "give me a char: ";
+		ch = cin.get();
 
-void WriteASCII() {
-	char ch = cin.get();
-
-	cout << (int)ch << endl;
-}
-
-// 9. Find the diameter, circumference and area of circle with given radius.
-
-void Circle() {
-	float r;
-	float pi = 3.14159265359;
-	
-	cin >> r;
-
-	float d = 2 * r;
-	float c = 2 * r * pi;
-	float a = r * r * pi;
-
-	cout << "diameter: " << d << " circumference: " << c << " area: " << a << endl;
-}
-
-// 10. Estimate the time needed for a stone to fall from height of 3000 m. Assume g = 9.8 m/s2.
-
-void Estimation() {
-	// h = 0,5 * g * t^2
-
-	float g = 9.81;
-	float h = 3000;
-
-	float t = sqrt((2 * h) / g);
-
-	cout << "Required time is: " << t << endl;
-
-}
-
-// 11. Find the distance between two points (20, 20) and (40, 50).
-
-void Distance() {
-	// d=sqrt((x2​−x1​)^2+(y2​−y1​)^2)
-
-	int x1 = 20, y1 = 20, x2 = 40, y2 = 50;
-	float d = sqrt(pow(x2 - x1,2)+ pow(y2 - y1, 2));
-
-	cout << "Distance is: " << d << endl;
-}
-
-// 12. If a straight line passes through points (1, 4) and (12, 56) decide if given point (x1, y1) lies on this straight line or not.
-
-void LiesOnLine() {
-	// m = (y2 - y1) / (x2 - x1)
-	// e => y - y0 = m * (x - x0)
-
-	int x1 = 1, y1 = 4, x2 = 12, y2 = 56;
-
-	float m = (y2 - y1) / (x2 - x1);
-
-	int x, y;
-
-	cout << "Give x and y: " << endl;
-	cin >> x >> y;
-
-	if ((y - y1) == m*(x - x1))
-		cout << "The given point lies on the line!";
-	else
-		cout << "The gien point does not lie on the line!";
-}
-
-// 13. Find if a given point lies inside a given circle or not.
-
-void InsideCircle() {
-	int r = 5;
-	int x = 2, y = 3;
-	int x0, y0;
-
-	cout << "Give x and y: " << endl;
-	cin >> x0 >> y0;
-
-	float d = sqrt(pow(x - x0, 2) + pow(y - y0, 2));
-
-	if (d < r)
-		cout << "The given point is inside the circe!";
-	else
-		cout << "The given point in not inside the circle!";
-}
-
-// 14. Write a program to accept an integer “num” from user. Check whether the given integer is even or odd and display appropriate message
-
-void EvenOrOdd() {
-	int i;
-	
-	cout << "Give an integer: " << endl;
-	cin >> i;
-
-	if (i % 2 == 0)
-		cout << i << " is even!";
-	else
-		cout << i << " is odd!";
-}
-
-// 15. Find the amount returned after 10 years if Rs. 5,000 are deposited for 10 years. Assume interest rate of 12%. Interest is compounded quarterly.
-
-void CalculateInterest() {
-	float amount = 5000;
-	float time = 10;
-	float rate = 12;
-
-	float interest = amount * (rate / 100) * time;
-
-	cout << "The interest is: " << interest;
-}
-
-// 16. Find the largest of given five integers.
-
-void LargestNumber() {
-	cout << "Give me 5 number: " << endl;
-
-	int largest = 0;
-	for (int i = 0; i < 5; i++) {
-		int num;
-		cin >> num;
-		if (num > largest)
-			largest = num;
+		cout << "the given char in ascii: " << (int)ch << endl;
 	}
 
-	cout << "The given largestnumber is: " << largest;
+	// 9. Find the diameter, circumference and area of circle with given radius.
+
+	void CircleArea() {
+		int radius;
+		cout << "give me the radius of a circle : ";
+
+		cin >> radius;
+
+		Circle c(radius);
+
+		cout << endl << "diameter: " << c.diameter() << " circumference: " << c.circumference() << " area: " << c.area() << endl;
+	}
+
+	// 10. Estimate the time needed for a stone to fall from height of 3000 m. Assume g = 9.8 m/s2.
+
+	void Estimation() {
+		// h = 0,5 * g * t^2
+
+		double g = 9.81;
+		double h = 3000;
+
+		double t = sqrt((2 * h) / g);
+
+		cout << "Required time is: " << t << endl;
+
+	}
+
+	// 11. Find the distance between two points (20, 20) and (40, 50).
+
+	void Distance() {
+		Point p1(20, 20);
+		Point p2(40, 50);
+
+		double d = distanceOfPoints(p1, p2);
+
+		cout << "Distance between two poits is: " << d << endl;
+	}
+
+	// 12. If a straight line passes through points (1, 4) and (12, 56) decide if given point (x1, y1) lies on this straight line or not.
+
+	void LiesOnLine() {
+		// m = (y2 - y1) / (x2 - x1)
+		// e => y - y0 = m * (x - x0)
+
+		Point p1(1, 4);
+		Point p2(12, 56);
+
+		double m = (p2.getY() - p1.getY()) / (p2.getX() - p1.getX());
+
+		int x, y;
+
+		cout << "Give x and y: " << endl;
+		cin >> x >> y;
+
+		if ((y - p1.getY()) == m * (x - p1.getX()))
+			cout << "The given point lies on the line!";
+		else
+			cout << "The gien point does not lie on the line!";
+	}
+
+	// 13. Find if a given point lies inside a given circle or not.
+
+	void InsideCircle() {
+		Circle c(2, 3, 5);	
+
+		int x0, y0;
+		cout << "Give x and y: " << endl;
+		cin >> x0 >> y0;
+		
+		Point p(x0, y0);
+		
+		bool retval = pointInsiteCircle(c, p);
+
+		if (retval)
+			cout << "The given point is inside the circe!";
+		else
+			cout << "The given point in not inside the circle!";
+	}
+
+	// 14. Write a program to accept an integer “num” from user. Check whether the given integer is even or odd and display appropriate message
+
+	void EvenOrOdd() {
+		int i;
+	
+		cout << "Give an integer: " << endl;
+		cin >> i;
+
+		if (i % 2 == 0)
+			cout << i << " is even!";
+		else
+			cout << i << " is odd!";
+	}
+
+	// 15. Find the amount returned after 10 years if Rs. 5,000 are deposited for 10 years. Assume interest rate of 12%. Interest is compounded quarterly.
+
+	void CalculateInterest() {
+
+		Investment iv(5000, 12, 10);
+
+		double interest = getInterest(iv);
+
+		cout << "The interest is: " << interest;
+	}
+
+	// 16. Find the largest of given five integers.
+
+	void LargestNumber() {
+		cout << "Give me 5 number: " << endl;
+
+		int largest = 0;
+		for (int i = 0; i < 5; i++) {
+			int num;
+			cin >> num;
+			if (num > largest)
+				largest = num;
+		}
+
+		cout << "The given largestnumber is: " << largest;
+	}
+
+
 }
+
+
 
 // 17. A professor took Rs. 30 lakh loan from HDFC for a term of 20 years. 
 //	   If payment is in equal instalments at the end of every year, find the yearly instalment. 
@@ -450,14 +457,14 @@ void QuadraticEquation() {
 //     If yes, then find whether the triangle is equilateral, isosceles or scalene.
 
 bool _liesOnLine(int x1, int y1, int x2, int y2, int x, int y) {
-	float m = (y2 - y1) / (x2 - x1);
+	double m = (y2 - y1) / (x2 - x1);
 	if ((y - y1) == m*(x - x1))
 		return true;
 	else
 		return false;
 }
 
-float _distance(int x1, int y1, int x2, int y2) {
+double _distance(int x1, int y1, int x2, int y2) {
 	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
 
@@ -475,11 +482,11 @@ void ConstructibleTriangle() {
 	else
 		cout << "The triangle is constructible!" << endl;
 	
-	float d1 = _distance(x1, y1, x2, y2);
+	double d1 = _distance(x1, y1, x2, y2);
 	cout << "d1: " << d1 << endl;
-	float d2 = _distance(x2, y2, x3, y3);
+	double d2 = _distance(x2, y2, x3, y3);
 	cout << "d2: " << d2 << endl;
-	float d3 = _distance(x3, y3, x1, y1);
+	double d3 = _distance(x3, y3, x1, y1);
 	cout << "d3: " << d3 << endl;
 
 	if ((d1 == d2) && (d1 == d3))
@@ -513,7 +520,7 @@ void LowestCommonMultiple() {
 
 // 21. Find the largest integer value n, such that its factorial can be correctly stored in variable of type “long”.
 
-int factorial(int n){
+double factorial(int n){
 
 	float result = 1;
 	int i = 0;
@@ -553,9 +560,9 @@ void SerielExpansionOfCos() {
 	double x;
 	cin >> x;
 
-	float k;
+	double k;
 	double sum = 0;
-	float a = 0, b = 0, c = 0;
+	double a = 0, b = 0, c = 0;
 
 	for (k = 0; k < 10; k++) {
 		//cout << "k: " << k << endl;
@@ -563,7 +570,7 @@ void SerielExpansionOfCos() {
 		//cout << "a: " << a << endl;
 		b = pow(x, (2 * k));
 		//cout << "b: " << b << endl;
-		c = factorial(2 * k);
+		c = factorial( 2.0 * k);
 		//cout << "c: " << c << endl << endl;
 		sum += ( a * b / c );
 	}

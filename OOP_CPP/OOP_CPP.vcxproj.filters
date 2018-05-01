@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Common Headers">
+      <UniqueIdentifier>{d46f7344-87ed-4d7e-9d59-e3c68e6c7c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common Sources">
+      <UniqueIdentifier>{8ff7b889-1fea-4578-8a29-c3728dad4499}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -77,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="ChapterTwentytwo.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="geomatics.cpp">
+      <Filter>Source Files\Common Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Source Files\Common Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="canvas.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="geomatics.h">
+      <Filter>Header Files\Common Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files\Common Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

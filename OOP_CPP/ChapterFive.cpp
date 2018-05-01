@@ -842,7 +842,7 @@ FixedDeposit::FixedDeposit(long r, long pa, int pe) {
 
 class Point_3;
 
-class Circle {
+/*class Circle {
 	int xcor, ycor, rad;
 public:
 	Circle(int, int, int);
@@ -885,7 +885,7 @@ Point_3::Point_3(int x, int y) {
 	x = x;
 	y = y;
 }
-
+*/
 // 19. Declare a class SavingsBankAccount with private data members accNum and balance. If you have to include attribute rateOfInterest, will you make it static? Write a small program using few objects of this class.
 
 class SavingsBankAccount {

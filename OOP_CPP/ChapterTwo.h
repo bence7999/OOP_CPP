@@ -33,28 +33,31 @@ namespace ChapterTwo {
 
 	void Prime1();
 
+	void AverageOfFloats();
+
+	void WriteASCII();
+
+	void CircleArea();
+
+	void Estimation();	
+
+	void Distance();
+
+	void LiesOnLine();
+
+	void InsideCircle();
+
+	void EvenOrOdd();
+
+	void CalculateInterest();
+
+	void LargestNumber();
+
+
 }
 
 
-float AverageOfFloats();
 
-void WriteASCII();
-
-void Circle();
-
-void Estimation();
-
-void Distance();
-
-void LiesOnLine();
-
-void InsideCircle();
-
-void EvenOrOdd();
-
-void CalculateInterest();
-
-void LargestNumber();
 
 void QuadraticEquation();
 
