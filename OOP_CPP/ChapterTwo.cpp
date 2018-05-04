@@ -387,332 +387,302 @@ namespace ChapterTwo {
 		cout << "The given largestnumber is: " << largest;
 	}
 
+	// 17. A professor took Rs. 30 lakh loan from HDFC for a term of 20 years. 
+	//	   If payment is in equal instalments at the end of every year, find the yearly instalment. 
+	//     If professor returns Rs 5 lakh at the end of fifth year as addition payment, find the reduction in instalments in remaining years. Assume rate of interest as 11%.
 
-}
+	void CalculateInterest2() {
+		Loan l(30, 20, 11);
 
+		int redemption = 5;
 
+		double instalments = getInstalment(l);
 
-// 17. A professor took Rs. 30 lakh loan from HDFC for a term of 20 years. 
-//	   If payment is in equal instalments at the end of every year, find the yearly instalment. 
-//     If professor returns Rs 5 lakh at the end of fifth year as addition payment, find the reduction in instalments in remaining years. Assume rate of interest as 11%.
+		cout << "Without redemption at the and of 20 years the interest is: " << instalments << endl;
 
-void CalculateInterest2() {
-	float amount = 30;
-	float time = 20;
-	float rate = 11;
-	int redemption = 5;
+		double redeemed_instalments = getRedemption(l);
 
-	float equal_instalments = amount * (rate / 100) * time;
-
-	cout << "Without redemption at the and of 20 years the interest is: " << equal_instalments << endl;
-
-	float redeemed_instalments = 0;
-
-	for (int i = 0; i < time; i++) {
-		redeemed_instalments += amount * (rate / 100);
-		if (i % redemption == 0)
-			amount -= redemption;
+		cout << "With redemption at the and of 20 years the interest is: " << redeemed_instalments << endl;
 	}
 
-	cout << "With redemption at the and of 20 years the interest is: " << redeemed_instalments << endl;
-}
+	// 18. Find roots of a given quadratic equation.
 
-// 18. Find roots of a given quadratic equation.
+	void QuadraticEquation() {
+		// ax^2+bx+c = 0 -> a != 0
+		// D = b^2-4ac
+		// x = (-b +- sqrt(D))/2a
 
-void QuadraticEquation() {
-	// ax^2+bx+c = 0 -> a != 0
-	// D = b^2-4ac
-	// x = (-b +- sqrt(D))/2a
+		float a, b, c, x1, x2, discriminant, realPart, imaginaryPart;
+		cout << "Enter coefficients a, b and c: " << endl;
+		cin >> a >> b >> c;
+		discriminant = b*b - 4 * a*c;
 
-	float a, b, c, x1, x2, discriminant, realPart, imaginaryPart;
-	cout << "Enter coefficients a, b and c: ";
-	cin >> a >> b >> c;
-	discriminant = b*b - 4 * a*c;
-
-	if (discriminant > 0) {
-		x1 = (-b + sqrt(discriminant)) / (2 * a);
-		x2 = (-b - sqrt(discriminant)) / (2 * a);
-		cout << "Roots are real and different." << endl;
-		cout << "x1 = " << x1 << endl;
-		cout << "x2 = " << x2 << endl;
-	}
-
-	else if (discriminant == 0) {
-		cout << "Roots are real and same." << endl;
-		x1 = (-b + sqrt(discriminant)) / (2 * a);
-		cout << "x1 = x2 =" << x1 << endl;
-	}
-
-	else {
-		realPart = -b / (2 * a);
-		imaginaryPart = sqrt(-discriminant) / (2 * a);
-		cout << "Roots are complex and different." << endl;
-		cout << "x1 = " << realPart << "+" << imaginaryPart << "i" << endl;
-		cout << "x2 = " << realPart << "-" << imaginaryPart << "i" << endl;
-	}
-
-}
-
-// 19. Write a program to accept three sides of a triangle in a, b and c. Check whether the triangle is constructible or not. 
-//     If yes, then find whether the triangle is equilateral, isosceles or scalene.
-
-bool _liesOnLine(int x1, int y1, int x2, int y2, int x, int y) {
-	double m = (y2 - y1) / (x2 - x1);
-	if ((y - y1) == m*(x - x1))
-		return true;
-	else
-		return false;
-}
-
-double _distance(int x1, int y1, int x2, int y2) {
-	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-}
-
-void ConstructibleTriangle() {
-	int x1, y1, x2, y2, x3, y3;
-
-	cout << "Give me 3 pair point for triangle: " << endl;
-
-	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-
-	if (_liesOnLine(x1, y1, x2, y2, x3, y3)) {
-		cout << "The triangle is not constructible!" << endl;
-		return;
-	}
-	else
-		cout << "The triangle is constructible!" << endl;
-	
-	double d1 = _distance(x1, y1, x2, y2);
-	cout << "d1: " << d1 << endl;
-	double d2 = _distance(x2, y2, x3, y3);
-	cout << "d2: " << d2 << endl;
-	double d3 = _distance(x3, y3, x1, y1);
-	cout << "d3: " << d3 << endl;
-
-	if ((d1 == d2) && (d1 == d3))
-		cout << "This is a equilateral triangle!" << endl;
-	else if (((d1 == d2) && (d1 != d3)) || ((d2 == d3) && (d2 != d1)) || ((d3 == d1) && (d3 != d1)))
-		cout << "This is a isosceles triangle!" << endl;
-	else if ((d1 != d2) && (d2 != d3) && (d3 != d1))
-		cout << "This is a scalene triangle!" << endl;
-}
-
-// 20. Find LCM of given two integers.
-
-void LowestCommonMultiple() {
-	int n1, n2, minMultiple;
-
-	cout << "Give 2 number: " << endl;
-	cin >> n1 >> n2;
-
-	minMultiple = (n1>n2) ? n1 : n2;
-
-	while (true)
-	{
-		if (minMultiple%n1 == 0 && minMultiple%n2 == 0)
-		{
-			cout << "The LCM of is: " <<  minMultiple << endl;
-			break;
+		if (discriminant > 0) {
+			x1 = (-b + sqrt(discriminant)) / (2 * a);
+			x2 = (-b - sqrt(discriminant)) / (2 * a);
+			cout << "Roots are real and different." << endl;
+			cout << "x1 = " << x1 << endl;
+			cout << "x2 = " << x2 << endl;
 		}
-		++minMultiple;
-	}
-}
 
-// 21. Find the largest integer value n, such that its factorial can be correctly stored in variable of type “long”.
-
-double factorial(int n){
-
-	float result = 1;
-	int i = 0;
-
-	if (n <= 1)
-		return 1;
-
-	for (i = 2; i <= n; i++){
-		result = result * i;
-	}
-	return result;
-}
-
-void StoredFactorial() {
-	cout << "Maximum of long int: " << LONG_MAX << endl;
-	
-	int num = 0;
-
-	while (true)
-	{
-		if (factorial(num) < LONG_MAX) {
-			num++;
+		else if (discriminant == 0) {
+			cout << "Roots are real and same." << endl;
+			x1 = (-b + sqrt(discriminant)) / (2 * a);
+			cout << "x1 = x2 =" << x1 << endl;
 		}
+
 		else {
-			break;
-		}
-	}
-	cout << "the largest integer value n, such that its factorial can be correctly stored in variable of type 'long': " << num << endl;
-}
-
-// 22. Find the cosine of a given angle using series expansion formula.
-
-void SerielExpansionOfCos() {
-	// cos x = ((-1)^k / (2*k+1)!) *x^(2*k+1)
-
-	cout << "Give me a angle: ";
-	double x;
-	cin >> x;
-
-	double k;
-	double sum = 0;
-	double a = 0, b = 0, c = 0;
-
-	for (k = 0; k < 10; k++) {
-		//cout << "k: " << k << endl;
-		a = pow(-1, k);
-		//cout << "a: " << a << endl;
-		b = pow(x, (2 * k));
-		//cout << "b: " << b << endl;
-		c = factorial( 2.0 * k);
-		//cout << "c: " << c << endl << endl;
-		sum += ( a * b / c );
-	}
-
-	cout << "cos(" << x << ") is: " << sum << endl;
-}
-
-// 23. Find first 50 prime numbers.
-
-bool primeCheck(int n) {
-	int i, flag = 1;
-	for (i = 2; i <n; i++){
-		if ((n%i) == 0){
-			flag = 0; // sets not prime
-			break;
-		}
-	}
-	if (flag == 1) return true;
-	else return false;
-}
-
-void PrimeNumbers() {
-	int prime[50];
-	int n = 2, count = 0;
-
-	while (true)
-	{
-		if (primeCheck(n)) {
-			prime[count] = n;
-			count++;
+			realPart = -b / (2 * a);
+			imaginaryPart = sqrt(-discriminant) / (2 * a);
+			cout << "Roots are complex and different." << endl;
+			cout << "x1 = " << realPart << "+" << imaginaryPart << "i" << endl;
+			cout << "x2 = " << realPart << "-" << imaginaryPart << "i" << endl;
 		}
 
-		if(count == 50) break;
-
-		n++;
 	}
 
-	for (int i = 0; i < 50; i++) {
-		cout << prime[i] << endl;
-	}
-}
+	// 19. Write a program to accept three sides of a triangle in a, b and c. Check whether the triangle is constructible or not. 
+	//     If yes, then find whether the triangle is equilateral, isosceles or scalene.
 
-// 24. Write a program to print fixed deposit table. Assume period as 1–5 years. 
-//     Assume compound interest rates as 5%, 6%, 6.5%, 7% and 7.5%. Assume deposit amount as Rs. 1,000.
+	void ConstructibleTriangle() {
 
-float interestCalculator(int amount, float rate, int time) {
-	return amount * (rate / 100) * time;
-}
+		Point a(1, 2);
+		Point b(-2, 3);
+		Point c(0, -5);
 
-void DepositTable() {
-	float r1 = 5, r2 = 6, r3 = 6.5, r4 = 7, r5 = 7.5;
-	int loan = 1000;
-	int period = 5;
+		Triangle t(a, b, c);
 
-	for (int i = 1; i < period+1; i++) {
-		cout << "If the loan is: " << loan << " and a rate is: " << r1 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r1, i) << endl;
-		cout << "If the loan is: " << loan << " and a rate is: " << r2 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r2, i) << endl;
-		cout << "If the loan is: " << loan << " and a rate is: " << r3 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r3, i) << endl;
-		cout << "If the loan is: " << loan << " and a rate is: " << r4 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r4, i) << endl;
-		cout << "If the loan is: " << loan << " and a rate is: " << r5 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r5, i) << endl;
-		cout << "<============================================================================================>" << endl;
-	}
+		bool is = t.isConstructible();
 
-}
+		if (!is)
+			exit(0);
 
-// 25. Write a program to accept an integer n from the user and find the sum and average of first n natural numbers.
+		int typeOf = t.typeOf();
 
-void SumOfNaturalNumbers() {
-	// natural numbers === non-negative integers
-
-	cout << "Give me an integers: ";
-	int n; cin >> n; n = abs(n);
-	int sum = 0;
-
-	for (int i = 0; i < n; i++) {
-		sum += i;
+		if (typeOf == 1)
+			cout << "equilateral triangle!" << endl;
+		else if (typeOf == 2)
+			cout << "isosceles triangle" << endl;
+		else if (typeOf == 3)
+			cout << "scalene triangle!" << endl;
 	}
 
-	cout << "Sum of " << n << " natural numbers is: " << sum << endl;
-}
+	// 20. Find LCM of given two integers.
 
-// 26. Find all the divisors (prime as well as non-prime) of a given integer.
+	void LowestCommonMultiple() {
+		int n1, n2, minMultiple;
 
-void Divisor() {
-	cout << "Give me an integer: ";
-	int n; cin >> n;
+		cout << "Give 2 number: " << endl;
+		cin >> n1 >> n2;
 
-	for (int i = 1; i < n; i++) {
-		if (n % i == 0)
-			cout << i << " is divisor of: " << n << endl;
+		minMultiple = (n1>n2) ? n1 : n2;
+
+		while (true)
+		{
+			if (minMultiple%n1 == 0 && minMultiple%n2 == 0)
+			{
+				cout << "The LCM of is: " <<  minMultiple << endl;
+				break;
+			}
+			++minMultiple;
+		}
 	}
-}
 
-// 27. Given a positive integer between 1 and 9999, find the number of digits needed to express it in binary form.
+	// 21. Find the largest integer value n, such that its factorial can be correctly stored in variable of type “long”.
 
-void ExpressInBinaryForm() {
-	cout << "Give me an integer between 1 and 9999: ";
-	int n; cin >> n;
+	double factorial(int n){
 
-	int i = 0;
-	while (true)
-	{
-		//cout << pow(2, i) << endl;
-		if (pow(2, i) > n)
-			break;
-		i++;
+		float result = 1;
+		int i = 0;
+
+		if (n <= 1)
+			return 1;
+
+		for (i = 2; i <= n; i++){
+			result = result * i;
+		}
+		return result;
 	}
-	cout << i << "pc digits needed to express" << endl;
-}
 
-// 28. Reverse the digits of a given integer.
+	void StoredFactorial() {
+		cout << "Maximum of long int: " << LONG_MAX << endl;
+	
+		int num = 0;
 
-void ReverseDigits() {
-	cout << "Give me an integer: ";
-
-	int i; cin >> i;
-
-	string str = to_string(i);
-	reverse(str.begin(), str.end());
-	i = stoi(str);
-	cout << i << endl;
-}
-
-// 29. Find the sum of all digits of an integer.
-
-void SumOfDigits() {
-	cout << "Give me an integer: ";
-	int n; cin >> n;
-	int sum = 0;
-
-	string str = to_string(n);
-	string::iterator it = str.begin();
-	for (it; it != str.end(); ++it) {
-		//cout << *it << endl;
-		sum += (int)*it - 48;
+		while (true)
+		{
+			if (factorial(num) < LONG_MAX) {
+				num++;
+			}
+			else {
+				break;
+			}
+		}
+		cout << "the largest integer value n, such that its factorial can be correctly stored in variable of type 'long': " << num << endl;
 	}
-	cout << "The sum is: " << sum;
-}
 
-// 30. Write a program to accept an integer n and find its binary equivalent, e.g. if n = 13 then b = 1101.
+	// 22. Find the cosine of a given angle using series expansion formula.
 
-void BinaryEquivalent() {
+	void SerielExpansionOfCos() {
+		// cos x = ((-1)^k / (2*k+1)!) *x^(2*k+1)
+
+		cout << "Give me a angle: ";
+		double x;
+		cin >> x;
+
+		double k;
+		double sum = 0;
+		double a = 0, b = 0, c = 0;
+
+		for (k = 0; k < 10; k++) {
+			//cout << "k: " << k << endl;
+			a = pow(-1, k);
+			//cout << "a: " << a << endl;
+			b = pow(x, (2 * k));
+			//cout << "b: " << b << endl;
+			c = factorial( 2.0 * k);
+			//cout << "c: " << c << endl << endl;
+			sum += ( a * b / c );
+		}
+
+		cout << "cos(" << x << ") is: " << sum << endl;
+	}
+
+	// 23. Find first 50 prime numbers.
+
+	bool primeCheck(int n) {
+		int i, flag = 1;
+		for (i = 2; i <n; i++){
+			if ((n%i) == 0){
+				flag = 0; // sets not prime
+				break;
+			}
+		}
+		if (flag == 1) return true;
+		else return false;
+	}
+
+	void PrimeNumbers() {
+		int prime[50];
+		int n = 2, count = 0;
+
+		while (true)
+		{
+			if (primeCheck(n)) {
+				prime[count] = n;
+				count++;
+			}
+
+			if(count == 50) break;
+
+			n++;
+		}
+
+		for (int i = 0; i < 50; i++) {
+			cout << prime[i] << endl;
+		}
+	}
+
+	// 24. Write a program to print fixed deposit table. Assume period as 1–5 years. 
+	//     Assume compound interest rates as 5%, 6%, 6.5%, 7% and 7.5%. Assume deposit amount as Rs. 1,000.
+
+	float interestCalculator(int amount, float rate, int time) {
+		return amount * (rate / 100) * time;
+	}
+
+	void DepositTable() {
+		float r1 = 5, r2 = 6, r3 = 6.5, r4 = 7, r5 = 7.5;
+		int loan = 1000;
+		int period = 5;
+
+		for (int i = 1; i < period+1; i++) {
+			cout << "If the loan is: " << loan << " and a rate is: " << r1 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r1, i) << endl;
+			cout << "If the loan is: " << loan << " and a rate is: " << r2 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r2, i) << endl;
+			cout << "If the loan is: " << loan << " and a rate is: " << r3 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r3, i) << endl;
+			cout << "If the loan is: " << loan << " and a rate is: " << r4 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r4, i) << endl;
+			cout << "If the loan is: " << loan << " and a rate is: " << r5 << " the time period is: " << i << " year, then the deposit is: " << interestCalculator(loan, r5, i) << endl;
+			cout << "<============================================================================================>" << endl;
+		}
+
+	}
+
+	// 25. Write a program to accept an integer n from the user and find the sum and average of first n natural numbers.
+
+	void SumOfNaturalNumbers() {
+		// natural numbers === non-negative integers
+
+		cout << "Give me an integers: ";
+		int n; cin >> n; n = abs(n);
+		int sum = 0;
+
+		for (int i = 0; i < n; i++) {
+			sum += i;
+		}
+
+		cout << "Sum of " << n << " natural numbers is: " << sum << endl;
+	}
+
+	// 26. Find all the divisors (prime as well as non-prime) of a given integer.
+
+	void Divisor() {
+		cout << "Give me an integer: ";
+		int n; cin >> n;
+
+		for (int i = 1; i < n; i++) {
+			if (n % i == 0)
+				cout << i << " is divisor of: " << n << endl;
+		}
+	}
+
+	// 27. Given a positive integer between 1 and 9999, find the number of digits needed to express it in binary form.
+
+	void ExpressInBinaryForm() {
+		cout << "Give me an integer between 1 and 9999: ";
+		int n; cin >> n;
+
+		int i = 0;
+		while (true)
+		{
+			//cout << pow(2, i) << endl;
+			if (pow(2, i) > n)
+				break;
+			i++;
+		}
+		cout << i << "pc digits needed to express" << endl;
+	}
+
+	// 28. Reverse the digits of a given integer.
+
+	void ReverseDigits() {
+		cout << "Give me an integer: ";
+
+		int i; cin >> i;
+
+		string str = to_string(i);
+		reverse(str.begin(), str.end());
+		i = stoi(str);
+		cout << i << endl;
+	}
+
+	// 29. Find the sum of all digits of an integer.
+
+	void SumOfDigits() {
+		cout << "Give me an integer: ";
+		int n; cin >> n;
+		int sum = 0;
+
+		string str = to_string(n);
+		string::iterator it = str.begin();
+		for (it; it != str.end(); ++it) {
+			//cout << *it << endl;
+			sum += (int)*it - 48;
+		}
+		cout << "The sum is: " << sum;
+	}
+
+	// 30. Write a program to accept an integer n and find its binary equivalent, e.g. if n = 13 then b = 1101.
+
+	void BinaryEquivalent() {
 	cout << "Give me an integer: ";
 	int n; cin >> n;
 
@@ -721,10 +691,10 @@ void BinaryEquivalent() {
 	cout << binary << endl;
 }
 
-// 31. Write a program to accept number of lines (n) from the user and display the following pattern on the screen. 
-//     (The pattern is shown for n = 4 and should vary according to the value of n.)
+	// 31. Write a program to accept number of lines (n) from the user and display the following pattern on the screen. 
+	//     (The pattern is shown for n = 4 and should vary according to the value of n.)
 
-void DisplayPattern() {
+	void DisplayPattern() {
 	cout << "Give me an integer: ";
 	int n; cin >> n;
 	int p = 1;
@@ -740,3 +710,11 @@ void DisplayPattern() {
 		cout << endl;
 	}
 }
+
+}
+
+
+
+
+
+

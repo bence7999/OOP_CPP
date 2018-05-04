@@ -102,3 +102,64 @@ bool pointInsiteCircle(Circle c, Point p) {
 		return false;
 }
 
+Triangle::Triangle()
+{
+	A = Point();
+	B = Point();
+	C = Point();
+}
+
+Triangle::Triangle(Point a, Point b, Point c) {
+	A = a;
+	B = b;
+	C = c;
+}
+
+Triangle::Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+	A = Point(x1, y1);
+	B = Point(x2, y2);
+	C = Point(x3, y3);
+}
+
+Triangle::~Triangle()
+{
+}
+
+double Triangle::area() {
+	return 0.0;
+}
+
+double Triangle::circumference() {
+	getDistances();
+	double circumference = d1 + d2 + d3;
+	return circumference;
+}
+
+bool Triangle::isConstructible() {
+	getDistances();
+
+	if (d1 + d2 <= d3 && d2 + d3 <= d1 && d2 + d1 <= d2)
+		return false;
+	else
+		return true;
+}
+
+int Triangle::typeOf() {
+	getDistances();
+
+	if ((d1 == d2) && (d1 == d3))
+		return 1;
+	//cout << "This is a equilateral triangle!" << endl;
+	else if (((d1 == d2) && (d1 != d3)) || ((d2 == d3) && (d2 != d1)) || ((d3 == d1) && (d3 != d1)))
+		return 2;
+	//cout << "This is a isosceles triangle!" << endl;
+	else if ((d1 != d2) && (d2 != d3) && (d3 != d1))
+		return 3;
+	//cout << "This is a scalene triangle!" << endl;
+}
+
+void Triangle::getDistances() {
+	d1 = distanceOfPoints(A, B);
+	d2 = distanceOfPoints(B, C);
+	d3 = distanceOfPoints(C, A);
+}

@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTwo::CalculateInterest();
+	ChapterTwo::DisplayPattern();
 	
 	Exit(); 
 	return 0;

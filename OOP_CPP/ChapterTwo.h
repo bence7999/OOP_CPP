@@ -53,38 +53,40 @@ namespace ChapterTwo {
 
 	void LargestNumber();
 
+	void CalculateInterest2();
+
+	void QuadraticEquation();
+
+	void ConstructibleTriangle();
+
+	void LowestCommonMultiple();
+
+	void StoredFactorial();
+
+	void SerielExpansionOfCos();
+
+	void PrimeNumbers();
+
+	void DepositTable();
+
+	void SumOfNaturalNumbers();
+
+	void Divisor();
+
+	void ExpressInBinaryForm();
+
+	void ReverseDigits();
+
+	void SumOfDigits();
+
+	void BinaryEquivalent();
+
+	void DisplayPattern();
 
 }
 
 
 
 
-void QuadraticEquation();
 
-void CalculateInterest2();
 
-void ConstructibleTriangle();
-
-void LowestCommonMultiple();
-
-void StoredFactorial();
-
-void SerielExpansionOfCos();
-
-void PrimeNumbers();
-
-void DepositTable();
-
-void SumOfNaturalNumbers();
-
-void Divisor();
-
-void ExpressInBinaryForm();
-
-void ReverseDigits();
-
-void SumOfDigits();
-
-void BinaryEquivalent();
-
-void DisplayPattern();
