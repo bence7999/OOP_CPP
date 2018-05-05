@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterThree::Binary1();
+	ChapterThree::StudentCalculator();
 	
 	Exit(); 
 	return 0;
