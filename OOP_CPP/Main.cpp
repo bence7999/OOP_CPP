@@ -1,5 +1,5 @@
 #include "ChapterTwo.h"
-//#include "ChapterThree.h"
+#include "ChapterThree.h"
 //#include "ChapterFive.h"
 //#include "ChapterSix.h"
 //#include "ChapterSeven.h"
@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterTwo::DisplayPattern();
+	ChapterThree::Binary1();
 	
 	Exit(); 
 	return 0;

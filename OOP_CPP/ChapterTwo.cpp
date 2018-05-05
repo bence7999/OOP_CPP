@@ -1,6 +1,7 @@
 ﻿#include "ChapterTwo.h"
 #include "geomatics.h"
 #include "common.h"
+#include "algorithm.h"
 
 using namespace std;
 
@@ -469,23 +470,13 @@ namespace ChapterTwo {
 
 	// 20. Find LCM of given two integers.
 
-	void LowestCommonMultiple() {
-		int n1, n2, minMultiple;
+	void CalculateLCM() {
+		int n1, n2;
 
 		cout << "Give 2 number: " << endl;
 		cin >> n1 >> n2;
-
-		minMultiple = (n1>n2) ? n1 : n2;
-
-		while (true)
-		{
-			if (minMultiple%n1 == 0 && minMultiple%n2 == 0)
-			{
-				cout << "The LCM of is: " <<  minMultiple << endl;
-				break;
-			}
-			++minMultiple;
-		}
+		int lcm = GreatestCommonDivisor(n1, n2);
+		cout << lcm;
 	}
 
 	// 21. Find the largest integer value n, such that its factorial can be correctly stored in variable of type “long”.

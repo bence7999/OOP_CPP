@@ -90,6 +90,9 @@
     <ClCompile Include="common.cpp">
       <Filter>Source Files\Common Sources</Filter>
     </ClCompile>
+    <ClCompile Include="algorithm.cpp">
+      <Filter>Source Files\Common Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChapterTwo.h">
@@ -183,6 +186,9 @@
       <Filter>Header Files\Common Headers</Filter>
     </ClInclude>
     <ClInclude Include="common.h">
+      <Filter>Header Files\Common Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm.h">
       <Filter>Header Files\Common Headers</Filter>
     </ClInclude>
   </ItemGroup>

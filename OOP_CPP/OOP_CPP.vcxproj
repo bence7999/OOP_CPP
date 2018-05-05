@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="algorithm.cpp" />
     <ClCompile Include="ChapterEight.cpp" />
     <ClCompile Include="ChapterEighteen.cpp" />
     <ClCompile Include="ChapterEleven.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithm.h" />
     <ClInclude Include="astro.h" />
     <ClInclude Include="attrib.h" />
     <ClInclude Include="bitgraph.h" />

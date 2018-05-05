@@ -1,223 +1,256 @@
 #include "ChapterThree.h"
+#include "algorithm.h"
 
 using namespace std;
 
-void pass_fail(int mark);
+namespace ChapterThree {
 
-void FunctionPrototypeCall() {
-	pass_fail(5);
-}
+	/// 3.1 INTRODUCTION TO FUNCTIONS
+	// Syntax of functions
 
-void pass_fail(int mark)
-{
-	if (mark >= 40)
-		cout << "pass" << endl;
-	else
-		cout << "fail" << endl;
-}
-
-int gcd(int m, int n) // Greatest common divisor 
-{
-	cout << m << " " << n << endl; //for debugging
-	if (n == 0) return m;
-	else if (n > m) gcd(n, m);
-	else gcd(n, m%n);
-}
-
-void InputParameters() {
-	int k, m, n;
-	cout << "<-- - gcd1.cpp--->" << endl;
-	cout << "give a numbers m and n :";
-	cin >> m >> n;
-	// n must b2 2 or more
-	if ((m <= 0) || (n <= 0))
-		cout << "wrong data" << endl;
-	else
+	void pass_fail(int mark)
 	{
-		k = gcd(m, n);
-		cout << " GCD is : " << k;
+		if (mark >= 40)
+			cout << "pass" << endl;
+		else
+			cout << "fail" << endl;
 	}
-}
 
-void swap(int &a, int & b);
+	void FunctionPrototypeCall() {
+		pass_fail(5);
+	}
 
-void Swapping() {
-	int i = 10, j = 20;
-	cout << "initial values" << endl;
-	cout << " i = " << i << " j = " << j << endl;
-	swap(i, j);
-	cout << "after swapping" << endl;
-	cout << " i = " << i << " j = " << j << endl;
-}
+	/// 3.2.2 GCD and LCM
+	// Write a C program to find GCD of two natural numbers using Euclid's algorithm
 
-void swap(int &a, int & b)
-{
-	int temp;
-	temp = a;
-	a = b;
-	b = temp;
-}
-
-int max_marks = 60;
-float f1(int marks)
-{
-	float per;
-	per = 100.0 * marks / max_marks;
-	return (per);
-}
-
-void GlobalLocal() {
-	int i;
-	float percent;
-	cout << "<-- - global1.cpp--->" << endl;
-	cout << "Give marks : ";
-	cin >> i;
-	percent = f1(i);
-	cout << "percentage is " << percent << endl;
-}
-
-int add(int i, int j)
-{
-	int temp;
-	temp = i + j;
-	return temp;
-};
-
-float add(float x, float y)
-{
-	float tmp;
-	tmp = x + y;
-	return tmp;
-};
-
-void FUnctionOverloading() {
-	int k, m = 3, n = 4; float z, a = 3.5, b = 5.5;
-	cout << "<-- - fover1.cpp--->" << endl;
-	k = add(m, n);
-	cout << " after adding k is " << k << endl;
-	z = add(a, b);
-	cout << " after adding z is " << z << endl;
-}
-
-long fib(int n)
-{
-	if ((n == 0) || (n == 1)) return 1;
-	else return fib(n - 1) + fib(n - 2);
-}
-
-void Fibb2() {
-	int n;
-	long value;
-	cout << "<-- - fibb2.cpp--->" << endl;
-	cout << "give n : ";
-	cin >> n;
-	value = fib(n);
-	cout << "value is " << value << endl;
-}
-
-const int maxx = 10;
-void sortb(int b[], int max);
-
-void Bubble1() {
-	int i;
-	int a[maxx] = { 26,11,67,89,34,92,43,9,88,54 };
-	cout << "<-- - bubble1.cpp--->" << endl;
-	cout << "Before sorting" << endl;
-	for (i = 0; i<maxx; i++)
-		cout << setw(6) << a[i];
-	cout << endl;
-	sortb(a, maxx); //array passed as reference
-	cout << "After sorting" << endl;
-	for (i = 0; i<maxx; i++)
-		cout << setw(6) << a[i];
-	cout << endl;
-}
-
-void sortb(int b[], int max){
-	int i, j;
-	int temp;
-
-	for (i = 0; i < max - 1; i++) {
-		for (j = 0; j<max - 1; j++)
+	void InputParameters() {
+		int k, m, n;
+		cout << "<-- - gcd1.cpp--->" << endl;
+		cout << "give a numbers m and n :" << endl;
+		cin >> m >> n;
+		// n must b2 2 or more
+		if ((m <= 0) || (n <= 0))
+			cout << "wrong data" << endl;
+		else
 		{
-			if (b[j] > b[j + 1])
-			{
-				temp = b[j];
-				b[j] = b[j + 1];
-				b[j + 1] = temp;
-			}
+			k = GreatestCommonDivisor(m, n);
+			cout << " GCD is : " << k;
 		}
 	}
-		
-}
 
-struct point
-{
-	int x;
-	int y;
-};
+	/// 3.2.3 call by reference – new style
+	// Write a function swap() for swapping two integers.
 
-float distance(point a, point b)
-{
-	float d;
-	d = (a.x - b.x)* (a.x - b.x)
-		+ (b.y - a.y)* (b.y - a.y);
-	d = sqrt(d);
-	return(d);
-}
-
-void Struct3() {
-	point *p1, *p2;
-	float dist;
-	cout << "<-- - struct3.cpp--->" << endl;
-	p1 = new point;
-	p2 = new point;
-	// structure is initialized here
-	(*p1).x = (*p1).y = 2;
-	p2->x = 5;
-	p2->y = 6;
-	dist = distance(*p1, *p2);
-	cout << "distance between two points\n " << dist << endl;
-}
-
-void Aunion1() {
-	union
+	void swap(int &a, int & b)
 	{
-		int num1;
-		long num2;
-	};
-	cout << "<-- - aunion1.cpp--->" << endl;
-	num2 = 256 * 256l + 5; // Note 1
-	cout << num2 << endl;
-	cout << num1 << endl; ;
-}
-
-void Cla1(int argc, char *argv[]) {
-	cout << "<-- - cla1.cpp--->" << endl;
-	cout << "1.No of arguments " << argc << endl;
-	cout << "2.The path " << argv[0] << endl;
-	cout << "3.The first argument " << argv[1] << endl;
-	cout << "4.The second argument " << argv[2] << endl;
-}
-
-void Binary1() {
-	char box[10];
-	int sum, i;
-	cout << "<-- - binary1.out--->" << endl;
-	cout << "Give 4 bit binary string : ";
-	cin >> box;
-	sum = 0;
-	for (i = 0; i<4; i++)
-	{
-		sum = sum * 2;
-		if (box[i] == '1') sum = sum + 1;
+		int temp;
+		temp = a;
+		a = b;
+		b = temp;
 	}
-	cout << "equivalent decimal number is " << sum << endl;
+
+	void Swapping() {
+		int i = 10, j = 20;
+		cout << "initial values" << endl;
+		cout << " i = " << i << " j = " << j << endl;
+		swap(i, j);
+		cout << "after swapping" << endl;
+		cout << " i = " << i << " j = " << j << endl;
+	}
+
+	/// 3.3 LOCAL VERSUS GLOBAL VARIABLES
+	// Write a program to read the marks obtained and calculate percentage of marks.Develop and use function percentage.Assume that the maximum marks are 60.
+
+	int max_marks = 60;
+
+	float f1(int marks)
+	{
+		float per;
+		per = 100.0 * marks / max_marks;
+		return (per);
+	}
+
+	void GlobalLocal() {
+		int i;
+		float percent;
+		cout << "<-- - global1.cpp--->" << endl;
+		cout << "Give marks : ";
+		cin >> i;
+		percent = f1(i);
+		cout << "percentage is " << percent << endl;
+	}
+
+	/// 3.4 FUNCTION OVERLOADING
+	// 3.4 FUNCTION OVERLOADING
+
+	int add(int i, int j)
+	{
+		int temp;
+		temp = i + j;
+		return temp;
+	};
+
+	float add(float x, float y)
+	{
+		float tmp;
+		tmp = x + y;
+		return tmp;
+	};
+
+	void FUnctionOverloading() {
+		int k, m = 3, n = 4; float z, a = 3.5, b = 5.5;
+		cout << "<-- - fover1.cpp--->" << endl;
+		k = add(m, n);
+		cout << " after adding k is " << k << endl;
+		z = add(a, b);
+		cout << " after adding z is " << z << endl;
+	}
+
+	/// 3.8 RECURSION
+	/// 3.5 Fibonacci number
+	// Write a program to find nth a Fibonacci number using recursion.
+
+	long fib(int n)
+	{
+		if ((n == 0) || (n == 1)) return 1;
+		else return fib(n - 1) + fib(n - 2);
+	}
+
+	void Fibb2() {
+		int n;
+		long value;
+		cout << "<-- - fibb2.cpp--->" << endl;
+		cout << "give n : ";
+		cin >> n;
+		value = fib(n);
+		cout << "value is " << value << endl;
+	}
+
+	/// 3.10.2 Array as function parameter
+	/// 3.6 Bubble sort
+	// Write a program to sort an array using bubble sort.
+
+	const int maxx = 10;
+
+	void sortb(int b[], int max);
+
+	void Bubble1() {
+		int i;
+		int a[maxx] = { 26,11,67,89,34,92,43,9,88,54 };
+		cout << "<-- - bubble1.cpp--->" << endl;
+		cout << "Before sorting" << endl;
+		for (i = 0; i<maxx; i++)
+			cout << setw(6) << a[i];
+		cout << endl;
+		sortb(a, maxx); //array passed as reference
+		cout << "After sorting" << endl;
+		for (i = 0; i<maxx; i++)
+			cout << setw(6) << a[i];
+		cout << endl;
+	}
+
+	void sortb(int b[], int max){
+		int i, j;
+		int temp;
+
+		for (i = 0; i < max - 1; i++) {
+			for (j = 0; j<max - 1; j++)
+			{
+				if (b[j] > b[j + 1])
+				{
+					temp = b[j];
+					b[j] = b[j + 1];
+					b[j + 1] = temp;
+				}
+			}
+		}
+		
+	}
+
+	/// 3.11.2 Using structure as function parameters
+	/// 3.11.3 Pointer to structures
+	// Write a program to demonstrate use of pointers with a structure.
+
+	struct point
+	{
+		int x;
+		int y;
+	};
+
+	float distance(point a, point b)
+	{
+		float d;
+		d = (a.x - b.x)* (a.x - b.x)
+			+ (b.y - a.y)* (b.y - a.y);
+		d = sqrt(d);
+		return(d);
+	}
+
+	void Struct3() {
+		point *p1, *p2;
+		float dist;
+		cout << "<-- - struct3.cpp--->" << endl;
+		p1 = new point;
+		p2 = new point;
+		// structure is initialized here
+		(*p1).x = (*p1).y = 2;
+		p2->x = 5;
+		p2->y = 6;
+		dist = distance(*p1, *p2);
+		cout << "distance between two points\n " << dist << endl;
+	}
+
+	/// 3.12.3 Anonymous union
+	// Write a program to study anonymous union.
+
+	void Aunion1() {
+		union
+		{
+			int num1;
+			long num2;
+		};
+		cout << "<-- - aunion1.cpp--->" << endl;
+		num2 = 256 * 256l + 5; // Note 1
+		cout << num2 << endl;
+		cout << num1 << endl; ;
+	}
+
+	/// 3.14 COMMAND LINE ARGUMENTS
+	// Write a program to demonstrate command line arguments.
+
+	void Cla1(int argc, char *argv[]) {
+		cout << "<-- - cla1.cpp--->" << endl;
+		cout << "1.No of arguments " << argc << endl;
+		cout << "2.The path " << argv[0] << endl;
+		cout << "3.The first argument " << argv[1] << endl;
+		cout << "4.The second argument " << argv[2] << endl;
+	}
+
+	/// 3.17 END OF CHAPTER PROGRAMS
+	/// Program 3.10 Converting binary string to decimal number
+	// Write a program to find the decimal value of a 4-bit binary string.
+
+	void Binary1() {
+		char box[10];
+		int sum, i;
+		cout << "<-- - binary1.out--->" << endl;
+		cout << "Give 4 bit binary string : ";
+		cin >> box;
+		sum = 0;
+		for (i = 0; i<4; i++)
+		{
+			sum = sum * 2;
+			if (box[i] == '1') sum = sum + 1;
+		}
+		cout << "equivalent decimal number is " << sum << endl;
+	}
+
+	///////////////////////////
+	////       TASKS       ////
+	/////////////////////////// 
+
 }
 
-///////////////////////////
-////       TASKS       ////
-/////////////////////////// 
 
 // 1. Discuss the salient features of C++ in comparison to C.
 
@@ -918,8 +951,8 @@ enum Accessory {
 	keyborad, mouse, pen_drive, speaker, monitor 
 };
 
-// 25. Write a program which runs from command prompt. Command line parameter is the name of the user (say “Raja”). 
-//     The program should print string “Good morning Raja”.
+// 25. Write a program which runs from command prompt. Command line parameter is the name of the user (say "Raja"). 
+//     The program should print string "Good morning Raja".
 
 void CmpProgramme(int argc, char *argv[]) {
 	cout << "Good morning " << argv[1] << endl;

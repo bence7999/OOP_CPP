@@ -59,7 +59,7 @@ namespace ChapterTwo {
 
 	void ConstructibleTriangle();
 
-	void LowestCommonMultiple();
+	void CalculateLCM();
 
 	void StoredFactorial();
 
