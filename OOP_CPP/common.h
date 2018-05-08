@@ -1,5 +1,4 @@
 
-
 class Bank
 {
 public:
@@ -41,4 +40,37 @@ public:
 	friend double getInstalment(Loan);
 	friend double getRedemption(Loan);
 };
+
+class Time
+{
+public:
+	Time();
+	Time(int, int, int);
+	~Time();
+	void set_time(int, int, int);
+	void show_time();
+	friend int compare(Time tx, Time ty); //---1---
+private:
+	int hr, min, sec;
+};
+
+class Complex
+{
+public:
+	Complex();
+	Complex(int, int);
+	~Complex();
+	void setRe(int);
+	int getRe();
+	void setIm(int);
+	int getIm();
+	void show();
+	void init();
+	friend Complex addComplex(Complex a, Complex b);
+	friend Complex multiComplex(Complex a, Complex b);
+
+private:
+	int real, imaginary;
+};
+
 

@@ -2,38 +2,45 @@
 #include <time.h>
 #include <cmath>
 
-void Hiding();
+namespace ChapterFive {
 
-void Date1();
+	void Hiding();
 
-void Ptrobj1();
+	void Date1();
 
-void Valuepa1();
+	void Ptrobj1();
 
-void Static3A();
+	void Valuepa1();
 
-void Static5();
+	void Varipa1();
 
-void Comapre1();
+	void Static3A();
 
-void Library1();
+	void Static5();
 
-void Lib2();
+	void Comapre1();
 
-void Timer1();
+	void Library1();
 
-void Timer2();
+	void Lib2();
 
-void Complex1();
+	void Timer1();
 
-void Complex2();
+	void Timer2();
 
-void Cstyle1();
+	void Complex1();
 
-void Deposit();
+	void Complex2();
 
-void CheckInCircle();
+	void Cstyle1();
 
-void GetVolume();
+	void Deposit();
 
-void CardGame();
+	void CheckInCircle();
+
+	void GetVolume();
+
+	void CardGame();
+
+}
+

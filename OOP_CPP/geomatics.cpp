@@ -12,10 +12,16 @@ Point::Point(int a, int b)
 {
 	x = a;
 	y = b;
+	num++;
 }
 
 Point::~Point()
 {
+}
+
+void Point::init(int a, int b) {
+	x = a;
+	y = b;
 }
 
 void Point::setX(int a) {
@@ -34,6 +40,19 @@ int Point::getY() {
 	return y;
 }
 
+void Point::show()
+{
+	cout << "xc = " << x << " yc = " << y << endl;
+}
+
+int Point::num = 0; // initialization of static data member
+
+void Point::show_total()
+{
+	cout << "total Points created = "
+		<< num << endl;
+}
+
 double distanceOfPoints(Point p1, Point p2) {
 
 	double d1 = (p2.getX() - p1.getX()) * (p2.getX() - p1.getX());
@@ -41,6 +60,12 @@ double distanceOfPoints(Point p1, Point p2) {
 	double distance = sqrt(d1 + d2);
 	return distance;
 
+}
+
+double distanceFromOrigin(Point p) {
+	double temp;
+	temp = sqrt(p.getX() * p.getX() + p.getY() * p.getY());
+	return temp;
 }
 
 Circle::Circle()

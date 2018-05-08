@@ -9,16 +9,22 @@ public:
 	Point();
 	Point(int, int);
 	~Point();
+	void init(int, int);
 	void setX(int);
 	int getX();
 	void setY(int);
 	int getY();
+	void show();
+	static int num;
+	static void show_total();
 private:
 	int x;
 	int y;
 };
 
 double distanceOfPoints(Point, Point);
+
+double distanceFromOrigin(Point);
 
 class Circle
 {

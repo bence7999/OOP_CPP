@@ -1,3 +1,4 @@
+#include <iostream>
 #include "common.h"
 
 Bank::Bank()
@@ -89,3 +90,103 @@ double getRedemption(Loan l) {
 
 	return redemptio;
 }
+
+Time::Time()
+{
+	hr = 0;
+	min = 0;
+	sec = 0;
+}
+
+Time::Time(int h, int m, int s) {
+	hr = h;
+	min = m;
+	sec = s;
+}
+
+Time::~Time()
+{
+}
+
+void Time::set_time(int h, int m, int s) {
+	hr = h;
+	min = m;
+	sec = s;
+}
+
+void Time::show_time() {
+	std::cout << hr << " : " << min << " : " << sec << std::endl;
+}
+
+int compare(Time tx, Time ty) //---3---
+{
+	int answer = 0;
+	long s1, s2;
+	s1 = ((tx.hr * 60) + tx.min) * 60 + tx.sec; //---4---
+	s2 = ((ty.hr * 60) + ty.min) * 60 + ty.sec; //---5---
+	if (s2 == s1) answer = 1;
+	return answer;
+}
+
+Complex::Complex() {
+	real = 0;
+	imaginary = 0;
+}
+
+Complex::Complex(int re, int im) {
+	real = re;
+	imaginary = im;
+}
+
+Complex::~Complex() {
+
+}
+
+void Complex::setRe(int re) {
+	real = re;
+}
+
+int Complex::getRe() {
+	return real;
+}
+
+void Complex::setIm(int im) {
+	imaginary = im;
+}
+
+int Complex::getIm() {
+	return imaginary;
+}
+
+void Complex::show() {
+	std::cout << real << " + " << imaginary << "j " << std::endl;
+}
+
+void Complex::init() {
+	int re, im;
+
+	std::cout << "give me real path: ";
+	std::cin >> re;
+
+	std::cout << "give me imaginary pah: ";
+	std::cin >> im;
+
+	real = re;
+	imaginary = im;
+
+}
+
+Complex addComplex(Complex a, Complex b) {
+	Complex z;
+	z.real = (a.real) + (b.real);
+	z.imaginary = (a.imaginary) + (b.imaginary);
+	return(z);
+}
+
+Complex multiComplex(Complex a, Complex b) {
+	Complex z;
+	z.real = ((a.real)*(b.real)) - ((a.imaginary)*(b.imaginary));
+	z.imaginary = ((a.real)*(b.imaginary)) + ((a.imaginary)*(b.real));
+	return(z);
+}
+

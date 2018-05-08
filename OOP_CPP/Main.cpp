@@ -1,6 +1,6 @@
 #include "ChapterTwo.h"
 #include "ChapterThree.h"
-//#include "ChapterFive.h"
+#include "ChapterFive.h"
 //#include "ChapterSix.h"
 //#include "ChapterSeven.h"
 //#include "ChapterEight.h"
@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterThree::StudentCalculator();
+	ChapterFive::Cstyle1();
 	
 	Exit(); 
 	return 0;
