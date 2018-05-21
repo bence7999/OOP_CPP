@@ -190,3 +190,28 @@ Complex multiComplex(Complex a, Complex b) {
 	return(z);
 }
 
+Complex conjugateComplex(Complex a) {
+	Complex tmp;
+	tmp.real = a.real;
+	tmp.imaginary = -1 * a.imaginary;
+	return tmp;
+}
+
+Complex subtactComplex(Complex a, Complex b) {
+	Complex tmp;
+	tmp.real = (a.real) - (b.real);
+	tmp.imaginary = (a.imaginary) - (b.imaginary);
+	return tmp;
+}
+
+Complex divideComplex(Complex a, Complex b) {
+	Complex con = conjugateComplex(b);
+	Complex numerator = multiComplex(a, con);
+	Complex denominator = multiComplex(b, con);
+	Complex tmp;
+	tmp.real = numerator.real / denominator.real;
+	tmp.imaginary = numerator.imaginary / denominator.real;
+
+	return tmp;
+}
+

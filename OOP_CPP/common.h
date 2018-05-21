@@ -19,7 +19,6 @@ protected:
 	int rate;
 };
 
-
 class Investment: public Bank
 {
 public:
@@ -66,11 +65,16 @@ public:
 	int getIm();
 	void show();
 	void init();
-	friend Complex addComplex(Complex a, Complex b);
-	friend Complex multiComplex(Complex a, Complex b);
+	friend Complex addComplex(Complex, Complex);
+	friend Complex multiComplex(Complex, Complex);
+	friend Complex conjugateComplex(Complex);
+	friend Complex subtactComplex(Complex, Complex);
+	friend Complex divideComplex(Complex, Complex);
 
 private:
 	int real, imaginary;
 };
+
+
 
 

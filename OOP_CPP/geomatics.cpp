@@ -55,8 +55,8 @@ void Point::show_total()
 
 double distanceOfPoints(Point p1, Point p2) {
 
-	double d1 = (p2.getX() - p1.getX()) * (p2.getX() - p1.getX());
-	double d2 = (p2.getY() - p1.getY()) * (p2.getY() - p1.getY());
+	double d1 = (p2.x - p1.x) * (p2.x - p1.x);
+	double d2 = (p2.y - p1.y) * (p2.y - p1.y);
 	double distance = sqrt(d1 + d2);
 	return distance;
 
@@ -64,7 +64,7 @@ double distanceOfPoints(Point p1, Point p2) {
 
 double distanceFromOrigin(Point p) {
 	double temp;
-	temp = sqrt(p.getX() * p.getX() + p.getY() * p.getY());
+	temp = sqrt(p.x * p.x + p.y * p.y);
 	return temp;
 }
 
@@ -117,6 +117,14 @@ double Circle::circumference() {
 double Circle::area() {
 	double area = radius * radius * M_PI;
 	return area;
+}
+
+bool inCircle(Circle c, Point p) {
+	float distance = distanceOfPoints(p, c.getCenter());
+	if (distance < c.radius)
+		return true;
+	else
+		return false;
 }
 
 bool pointInsiteCircle(Circle c, Point p) {

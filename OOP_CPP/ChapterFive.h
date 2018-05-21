@@ -34,9 +34,17 @@ namespace ChapterFive {
 
 	void Cstyle1();
 
+	void ComplexOperations();
+
+	void CheckDateLeap();
+
+	void CheckValidate();
+
+	void CheckDistanceFromOrigin();
+
 	void Deposit();
 
-	void CheckInCircle();
+	void CheckIncircle();
 
 	void GetVolume();
 

@@ -17,14 +17,14 @@ public:
 	void show();
 	static int num;
 	static void show_total();
+	friend double distanceFromOrigin(Point);
+	friend double distanceOfPoints(Point, Point);
 private:
 	int x;
 	int y;
 };
 
-double distanceOfPoints(Point, Point);
 
-double distanceFromOrigin(Point);
 
 class Circle
 {
@@ -39,6 +39,7 @@ public:
 	double diameter();
 	double circumference();
 	double area();
+	friend bool inCircle(Circle, Point);
 private:
 	int radius;
 	Point center;

@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterFive::Cstyle1();
+	ChapterFive::CardGame();
 	
 	Exit(); 
 	return 0;
