@@ -1,7 +1,7 @@
 #include "ChapterTwo.h"
 #include "ChapterThree.h"
 #include "ChapterFive.h"
-//#include "ChapterSix.h"
+#include "ChapterSix.h"
 //#include "ChapterSeven.h"
 //#include "ChapterEight.h"
 //#include "ChapterNine.h"
@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterFive::CardGame();
+	ChapterSix::Inilist1();
 	
 	Exit(); 
 	return 0;

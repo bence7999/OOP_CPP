@@ -45,12 +45,27 @@ class Time
 public:
 	Time();
 	Time(int, int, int);
+	Time(long);
 	~Time();
+	void set_time();
 	void set_time(int, int, int);
 	void show_time();
 	friend int compare(Time tx, Time ty); //---1---
 private:
 	int hr, min, sec;
+};
+
+class Date
+{
+public:
+	Date();
+	Date(int, int, int);
+	~Date();
+	void Init();
+	void Init(int, int, int y = 2003);
+	void showDate();
+private:
+	int day, month, year;
 };
 
 class Complex

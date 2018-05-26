@@ -104,8 +104,23 @@ Time::Time(int h, int m, int s) {
 	sec = s;
 }
 
+Time::Time(long h)
+{
+	long temp;
+	sec = h % 60;
+	temp = h / 60;
+	min = temp % 60;
+	hr = temp / 60;
+}
+
 Time::~Time()
 {
+}
+
+void Time::set_time() {
+	hr = 0;
+	min = 0;
+	sec = 0;
 }
 
 void Time::set_time(int h, int m, int s) {
@@ -126,6 +141,41 @@ int compare(Time tx, Time ty) //---3---
 	s2 = ((ty.hr * 60) + ty.min) * 60 + ty.sec; //---5---
 	if (s2 == s1) answer = 1;
 	return answer;
+}
+
+Date::Date()
+{
+	day = 0;
+	month = 0;
+	year = 0;
+}
+
+Date::Date(int d, int m, int y)
+{
+	this->day = d;
+	this->month = m;
+	this->year = y;
+}
+
+void Date::Init() {
+	std::cout << "Interactive constructor" << std::endl;
+	std::cout << "Enter day month year : " << std::endl;
+	std::cin >> day >> month >> year;
+}
+
+void Date::Init(int d, int m, int y) {
+	day = d;
+	month = m;
+	year = y;
+}
+
+Date::~Date()
+{
+}
+
+void Date::showDate()
+{
+	std::cout << day << " / " << month << " / " << year << std::endl;
 }
 
 Complex::Complex() {

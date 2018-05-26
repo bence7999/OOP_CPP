@@ -2,17 +2,9 @@
 
 using namespace std;
 
-namespace chapterSix {
+namespace ChapterSix {
 
 	// Write a program to demonstrate that un-initialized objects contain arbitrary values.
-
-	class Date
-	{
-	private:
-		int day, month, year;
-	public:
-		void showDate();
-	};
 
 	void Object1() {
 		Date d1;
@@ -24,233 +16,81 @@ namespace chapterSix {
 		d2->showDate();
 	}
 
-	void Date::showDate()
-	{
-		cout << day << " / " << month << " / " << year << endl;
-	}
-
 	// Write a program to demonstrate constructor.
-
-	class Date_2
-	{
-	private:
-		int day, month, year;
-	public:
-		Date_2();
-		void showDate();
-	};
 
 	void Objinit1() {
 		cout << "<-- - objinit1.cpp--->" << endl;
-		Date_2 d1;
+		Date d1;
+		d1.Init();
 		cout << "Showing d1" << endl;
 		d1.showDate();
 	}
 
-	Date_2::Date_2()
-	{
-		cout << "Interactive constructor" << endl;
-		cout << "Enter day month year : " << endl;
-		cin >> day >> month >> year;
-	}
-
-	void Date_2::showDate()
-	{
-		cout << day << " / " << month << " / " << year << endl;
-	}
-
 	// Write a program to demonstrate parameterized constructor.
-
-	class Date_3
-	{
-	private:
-		int day, month, year;
-	public:
-		//
-		Date_3(int d, int m, int y)
-		{
-			day = d;
-			month = m;
-			year = y;
-		};
-		void showDate()
-		{
-			cout << day << ":" << month << " : " << year << endl;
-		};
-	};
 
 	void Const1() {
 		cout << "<-- - const1.cpp--->" << endl;
-		Date_3 d1(13, 10, 2003);
+		Date d1(13, 10, 2003);
 		cout << "Showing d1" << endl;
 		d1.showDate();
 	}
 
 	// Write a program to illustrate "this" pointer.
 
-	class Date_4
-	{
-	private:
-		int day, month, year;
-	public:
-		Date_4(int day, int month, int year);
-		void showDate();
-	};
-
 	void This1() {
 		cout << "<-- - this1.cpp--->" << endl;
-		Date_4 d1(13, 10, 2003);
+		Date d1(13, 10, 2003);
 		cout << "Showing d1" << endl;
 		d1.showDate();
 	}
 
-	Date_4::Date_4(int day, int month, int year)
-	{
-		this->day = day;
-		this->month = month;
-		this->year = year;
-	}
-
-	void Date_4::showDate()
-	{
-		cout << day << ":" << month << " : " << year << endl;
-
-	}
-
 	// Write a program to demonstrate constructor overloading.
-
-	class Date_5
-	{
-	private:
-		int day, month, year;
-	public:
-		Date_5();
-		Date_5(int d, int m, int y);
-		void showDate();
-	};
 
 	void Const2() {
 		cout << "<-- - const2.cpp--->" << endl;
-		Date_5 d1;
-		Date_5 d2(20, 9, 2003);
+		Date d1;
+		Date d2(20, 9, 2003);
 		cout << "Showing d1, entered from keyboard " << endl;
 		d1.showDate();
 		cout << "Showing d2, initialized " << endl;
 		d2.showDate();
 	}
 
-	Date_5::Date_5()
-	{
-		cout << "Enter day month year : ";
-		cin >> day >> month >> year;
-	}
-
-	Date_5::Date_5(int d, int m, int y)
-	{
-		day = d;
-		month = m;
-		year = y;
-	}
-
-	void Date_5::showDate()
-	{
-		cout << day << " / " << month << " / " << year << endl;
-
-	}
-
 	// Write a program to demonstrate constructor overloading.
-
-	class Time
-	{
-		int hrs;
-		int mins;
-		int secs;
-	public:
-		Time() { hrs = 0; mins = 0; secs = 0; }
-		Time(int h, int m, int s);
-		Time(long h);
-		void setTime();
-		void showTime();
-	};
 
 	void Const3() {
 		cout << "<-- - const3.cpp--->" << endl;
 		Time t1;     //…1
 		cout << "showing t1 : ";
-		t1.showTime();
+		t1.show_time();
 		Time t2(9, 15, 0);    //…2
 		cout << "college opens time t2 : ";
 
-		t2.showTime();
+		t2.show_time();
 
 		Time t3;     //…3
-		t3.setTime();
+		t3.set_time();
 		cout << "lunch break starts time t3 : ";
-		t3.showTime();
+		t3.show_time();
 		Time t4(51300);    //…4
 		cout << "lunch break ends time t4 : ";
-		t4.showTime();
+		t4.show_time();
 		Time t5 = Time(17, 15, 0);   //…5
 		cout << "The day ends time t5 : ";
-		t5.showTime();
-	}
-
-	Time::Time(int h, int m, int s)
-	{
-		hrs = h; mins = m; secs = s;
-	}
-
-	Time::Time(long h)
-	{
-		long temp;
-		secs = h % 60;
-		temp = h / 60;
-		mins = temp % 60;
-		hrs = temp / 60;
-	}
-
-	void Time::setTime()
-	{
-		cout << "Enter time as hh mm ss : ";
-		cin >> hrs >> mins >> secs;
-	}
-
-	void Time::showTime()
-	{
-		cout << hrs << ':' << mins << ' : ' << secs << endl;
-
+		t5.show_time();
 	}
 
 	// Write a program with class Date to demonstrate default arguments for the constructors.
 
-	class Date_6
-	{
-	private:
-		int day, month, year;
-	public:
-		Date_6(int d, int m, int y = 2002);
-		void showDate();
-	};
-
 	void Default1() {
 		cout << "<-- - default1.cpp--->" << endl;
-		Date_6 d1(15, 8, 1947);
+		Date d1(15, 8, 1947);
 		cout << "Showing d1" << endl;
 		d1.showDate();
-		Date_6 d2(15, 8);
+		Date d2;
+		d2.Init(15, 8);
 		cout << "Showing d2" << endl;
 		d2.showDate();
-	}
-
-	Date_6::Date_6(int d, int m, int y)	{
-		day = d;
-		month = m;
-		year = y;
-	}
-
-	void Date_6::showDate()
-	{
-		cout << day << ":" << month << " : " << year << endl;
 	}
 
 	// Write a program to demonstrate default copy constructor
@@ -264,6 +104,7 @@ namespace chapterSix {
 	public:
 		void show();
 		Period(int d, int m, int y); // constructor
+		Period(Period &tmp); //copy constructor
 	};
 
 	void Ecopy1() {
@@ -289,42 +130,18 @@ namespace chapterSix {
 
 	// Write a program to demonstrate a user-defined copy constructor.
 
-	class Period_2
-	{
-	private:
-		int days, months, years;
-	public:
-		void show();
-
-		Period_2(int d, int m, int y); // constructor
-
-		Period_2(Period_2 &tmp); //copy constructor
-	};
-
 	void Ecopy2() {
 		cout << "<-- - ecopy2.cpp--->" << endl;
-		Period_2 p1(10, 6, 100);
+		Period p1(10, 6, 100);
 		cout << "original object" << endl;
 		p1.show();
 		cout << "now using explicit copy constructor" << endl;
-		Period_2 p2(p1);
+		Period p2(p1);
 		cout << "copied object" << endl;
 		p2.show();
 	}
 
-	void Period_2::show()
-	{
-		cout << "period is : " << days << " : " << months << " : " << years << endl;
-	}
-
-	Period_2::Period_2(int d, int m, int y)
-	{
-		days = d;
-		months = m;
-		years = y;
-	}
-
-	Period_2::Period_2(Period_2 &tmp)
+	Period::Period(Period &tmp)
 	{
 		cout << "copy constructor in action " << endl;
 		days = tmp.days;
@@ -414,31 +231,15 @@ namespace chapterSix {
 
 	// Write a program to illustrate initialization of array of objects defined with the help of pointers.
 
-	class Student_2
-	{
-	public:
-		char name[20];
-		int rollNum;
-		Student_2();
-	};
-
 	void Arrobj2() {
 		cout << "<-- - arrobj2.cpp--->" << endl;
-		Student_2 *sptr[3]; // note 1
+		Student *sptr[3]; // note 1
 		for (int i = 0; i<3; i++)
-			sptr[i] = new Student_2(); // note2
+			sptr[i] = new Student(); // note2
 		cout << "Name of second Student is ";
 		cout << sptr[1]->name << endl;;
 		cout << "RollNum of second Student is ";
 		cout << sptr[1]->rollNum << endl;
-	}
-
-	Student_2::Student_2() // interactive default constructor
-	{
-		cout << "Give name : ";
-		cin >> name;
-		cout << "Give rollNum : ";
-		cin >> rollNum;
 	}
 
 	// Write a program to demonstrate a destructor.
@@ -480,35 +281,10 @@ namespace chapterSix {
 
 	// Write a program to illustrate the initialization of an object with initializer list.
 
-	class Time_2
-	{
-	public:
-		int hr, min, sec;
-		void setTime();
-		void showTime();
-	};
-
 	void Inilist1() {
-		Time_2 t1 = { 5, 6, 7 };
+		Time t1 = { 5, 6, 7 };
 		cout << "<-- - inilist1.cpp--->" << endl;
-		t1.showTime();
-	}
-
-	void Time_2::setTime()
-	{
-		cout << endl << "Enter hours : ";
-		cin >> hr;
-		cout << "Enter minutes : ";
-		cin >> min;
-		cout << "Enter seconds : ";
-		cin >> sec;
-	}
-
-	void Time_2::showTime()
-	{
-		cout << "The set time is " << endl;
-		cout << hr << " : " << min << " : " << sec << endl;
-
+		t1.show_time();
 	}
 
 	///////////////////////////
