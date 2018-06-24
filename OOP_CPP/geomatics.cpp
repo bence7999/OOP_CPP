@@ -68,6 +68,43 @@ double distanceFromOrigin(Point p) {
 	return temp;
 }
 
+Vector::Vector()
+{
+	Point tmp1;
+	a = tmp1;
+	Point tmp2;
+	b = tmp2;
+	length = 0;
+	slope = 0;
+}
+
+Vector::Vector(Point p1, Point p2) {
+	a = p1;
+	b = p2;
+	length = p1.getX() - p2.getX();
+	slope = p1.getY() - p2.getY();
+}
+
+Vector::Vector(double l, double s) {
+	length = l;
+	slope = s;
+}
+
+Vector::~Vector()
+{
+}
+
+double Vector::absValueOfVector() {
+	double tmp = sqrt(pow(length, 2) + pow(slope, 2));
+	return tmp;
+}
+
+double angleOfVectors(Vector v1, Vector v2) {
+	double ang = (v1.length * v2.length + v1.slope * v2.slope) / (v1.absValueOfVector() * v2.absValueOfVector());
+	double radian = acos(ang);
+	return radian * 180 / M_PI;
+}
+
 Circle::Circle()
 {
 	radius = 0;
@@ -196,3 +233,61 @@ void Triangle::getDistances() {
 	d2 = distanceOfPoints(B, C);
 	d3 = distanceOfPoints(C, A);
 }
+
+Rectangle::Rectangle()
+{
+	a = Point();
+	b = Point();
+	c = Point();
+	d = Point();
+}
+
+Rectangle::Rectangle(Point p1, Point p2, Point p3, Point p4)
+{
+	a = p1;
+	b = p2;
+	c = p3;
+	d = p4;
+}
+
+Rectangle::~Rectangle()
+{
+}
+
+bool Rectangle::isRectangle() {
+	double d1 = distanceOfPoints(a, b);
+	double d2 = distanceOfPoints(b, c);
+	double d3 = distanceOfPoints(c, d);
+	double d4 = distanceOfPoints(d, a);
+
+	if (d1 != d3 && d2 != d4)
+		return(false);
+
+	Vector v1(a, b), v2(b, c), v3(c, d), v4(d, a);
+
+	if (angleOfVectors(v1, v2) != 90.0 && angleOfVectors(v2, v3) != 90.0 && angleOfVectors(v3, v4) != 90.0 && angleOfVectors(v4, v1) != 90.0) {
+		return false;
+	}
+
+	return true;
+}
+
+bool Rectangle::isSquare() {
+	double d1 = distanceOfPoints(a, b);
+	double d2 = distanceOfPoints(b, c);
+	double d3 = distanceOfPoints(c, d);
+	double d4 = distanceOfPoints(d, a);
+	
+	if (d1 != d2 && d2 != d3 && d3 != d4) {
+		return false;
+	}
+
+	Vector v1(a, b), v2(b, c), v3(c, d), v4(d, a);
+
+	if (angleOfVectors(v1, v2) != 90.0 && angleOfVectors(v2, v3) != 90.0 && angleOfVectors(v3, v4) != 90.0 && angleOfVectors(v4, v1) != 90.0) {
+		return false;
+	}
+
+	return true;
+}
+

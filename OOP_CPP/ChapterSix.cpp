@@ -322,7 +322,7 @@ namespace ChapterSix {
 	// 14. Define suitable constructors for the following classes:
 	//     1. Point
 
-	class Point
+	/*class Point
 	{
 	public:
 		Point(int, int);
@@ -330,13 +330,13 @@ namespace ChapterSix {
 		int x, y;
 	private:
 
-	};
+	};*/
 
-	Point::Point(int x, int y)
+	/*Point::Point(int x, int y)
 	{
 		this->x = x;
 		this->y = y;
-	}
+	}*/
 
 	//     2. Temperature
 
@@ -470,50 +470,12 @@ namespace ChapterSix {
 
 	// 18. Define a class Circle with suitable constructor. Write a program to find the area of a circle using method area().
 
-	class Circle
-	{
-	public:
-		Circle();
-		Circle(int, int, int);
-		~Circle();
-		void area();
-	private:
-		int cx, cy, r;
-	};
-
-	Circle::Circle()
-	{
-		cout << "give me two int for central point of circle: " << endl;
-		cin >> cx >> cy;
-		cout << "give me the radios of circle: ";
-		cin >> r;
-	}
-
-	Circle::Circle(int x, int y, int r)
-	{
-		this->cx = x;
-		this->cy = y;
-		this->r = r;
-	}
-
-	Circle::~Circle()
-	{
-		cout << "delete the circle!" << endl;
-	}
-
-	void Circle::area() {
-		double PI = 3.14159265359;
-		double area = r*r*PI;
-
-		cout << "the area is: " << area << endl;
-	}
-
 	void AreaOfCircle() {
 		Circle c1(2, 3, 4);
 		Circle c2;
 
-		c1.area();
-		c2.area();
+		cout << c1.area() << endl;
+		cout << c2.area() << endl;
 	}
 
 	// 19. Define a class Dice with suitable constructor. Write a program to find the new value using method throwDice(); (Hint: The constructor must initialize pseudo random number generator.)
@@ -560,89 +522,9 @@ namespace ChapterSix {
 	// 20. Design simple class rectangle with attributes (x1, y1, x2, y2, x3, y3, x4, y4) as vertices. Develop methods isRectangle() and isSquare() for the class. Write a suitable program to use this class. 
 	//     Use initializer list to initialize the object.
 
-	class Rectangle
-	{
-	public:
-		Rectangle();
-		Rectangle(int, int, int, int, int, int, int, int);
-		~Rectangle();
-		bool isRectangle();
-		bool isSquare();
-	private:
-		int x1, y1, x2, y2, x3, y3, x4, y4;
-	};
-
-	Rectangle::Rectangle()
-	{
-		cout << "give me 8 integer: " << endl;
-		cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
-	}
-
-	Rectangle::Rectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-		this->x1 = x1;
-		this->y1 = y1;
-		this->x2 = x2;
-		this->y2 = y2;
-		this->x3 = x3;
-		this->y3 = y3;
-		this->x4 = x4;
-		this->y4 = y4;
-	}
-
-	Rectangle::~Rectangle()
-	{
-	}
-
-	float distance(int x1, int y1, int x2, int y2) {
-		return sqrt(pow(x2- x1, 2) + pow(y2-y2, 2));
-	}
-
-	float sloap(int x1, int y1, int x2, int y2) {
-		return (y2 - y1) / (x2 - x1);
-	}
-
-	float angle(float m1, float m2) {
-		float angle = abs((m2 - m1) / (1 + m2*m1));
-		return atan(angle);
-	}
-
-	bool Rectangle::isRectangle() {
-		float a, b, c, d, m1, m2, m3, m4, alfa, beta, gamma, delta;
-
-		a = distance(x1, y1, x2, y2);
-		m1 = sloap(x1, y1, x2, y2);
-
-		b = distance(x2, y2, x3, y3);
-		m2 = sloap(x2, y2, x3, y3);
-		
-		c = distance(x3, y3, x4, y4);
-		m3 = sloap(x3, y3, x4, y4);
-		
-		d = distance(x4, y4, x1, y1);
-		m4 = sloap(x4, y4, x1, y1);
-
-		alfa = angle(m1, m2);
-		beta = angle(m2, m3);
-		delta = angle(m3, m4);
-		gamma = angle(m4, m1);
-
-		if (a == c && b == d) {
-			if (alfa == 90 && beta == 90 && gamma == 90 && delta == 90) {
-				return true;
-			}
-			else
-				return false;
-		}
-		else 
-			return false;
-	}
-
-	bool Rectangle::isSquare() {
-		return false;
-	}
-
-	void CertanglePrograme() {
-		Rectangle r1{1, 2, 3, 4, 5, 6, 7, 8};
+	void RertanglePrograme() {
+		Point p1(2, 2), p2(6, 2), p3(6, 4), p4(2, 4);
+		Rectangle r1(p1, p2, p3, p4);
 		cout << r1.isRectangle() << endl;
 		cout << r1.isSquare() << endl;
 	}
@@ -716,6 +598,7 @@ namespace ChapterSix {
 	{
 	public:
 		void init();
+		//Donation(char *p, long amt);
 		friend void FindTotalDonation(Donation[], int);
 	private:
 		string name;
@@ -747,44 +630,26 @@ namespace ChapterSix {
 
 	// 24. Modify the program of donations such that class should have only one constructor Donation (char *p, long amt). Create an array of 10 pointers to class donation. Why do we need pointers in this program?
 
-	class Donation_2
-	{
-	public:
-		Donation_2(char *p, long amt);
-		friend void FindTotalDonation_2(Donation_2[], int);
-	private:
-		string name;
-		int amount;
-	};
-
-	Donation_2::Donation_2(char *p, long amt) {
+	/*Donation::Donation(char *p, long amt) {
 		amount = amt;
 		name = p;
 
 	}
 
-	void Donors_2() {
-		Donation_2 d1("alma1", 55);
-		Donation_2 d2("alma2", 56);
-		Donation_2 d3("alma3", 57);
-		Donation_2 d4("alma4", 58);
-		Donation_2 d5("alma5", 59);
-		Donation_2 d6("alma6", 60);
-		Donation_2 d7("alma7", 61);
-		Donation_2 d8("alma8", 62);
-		Donation_2 d9("alma9", 63);
-		Donation_2 d10 ("alma10", 64);
-		Donation_2 don[10] = { d1, d2, d3, d4, d5, d6, d7, d8, d9, d10 };
-		FindTotalDonation_2(don, 10);
-	}
-
-	void FindTotalDonation_2(Donation_2 d[], int num) {
-		int sum = 0;
-		for (int i = 0; i < num; i++) {
-			sum += d[i].amount;
-		}
-		cout << "num of total Donation_2 is: " << sum << endl;
-	}
+	void Donors2() {
+		Donation d1("alma1", 55);
+		Donation d2("alma2", 56);
+		Donation d3("alma3", 57);
+		Donation d4("alma4", 58);
+		Donation d5("alma5", 59);
+		Donation d6("alma6", 60);
+		Donation d7("alma7", 61);
+		Donation d8("alma8", 62);
+		Donation d9("alma9", 63);
+		Donation d10 ("alma10", 64);
+		Donation don[10] = { d1, d2, d3, d4, d5, d6, d7, d8, d9, d10 };
+		FindTotalDonation(don, 10);
+	}*/
 
 	// 25. Consider a declaration
 	//     Where class Card represents a playing card. Under what circumstances this declaration will fail to compile?
@@ -812,48 +677,9 @@ namespace ChapterSix {
 
 	// 26. Design a constructor for class Date such that input parameter is a string in the format “dd:mm:yy”. Assume that the dates are from this century only.
 
-	class Date_7
-	{
-	public:
-		Date_7(string);
-		~Date_7();
-		void show();
-	private:
-		int dd, mm, yy;
-	};
-
-	Date_7::Date_7(string date)
-	{
-		char delim = ':';
-
-		size_t found = date.find(delim);
-		string day = date.substr(0, found);
-		date = date.substr(found+1);
-
-		found = date.find(delim, found);
-		string month = date.substr(0, found);
-		date = date.substr(found+1);
-
-		found = date.find(delim, found);
-		string year = date.substr(0, found);
-
-		dd = stoi(day);
-		mm = stoi(month);
-		yy = stoi(year);
-
-	}
-
-	Date_7::~Date_7()
-	{
-	}
-
-	void Date_7::show() {
-		cout << "day: " << dd << " month: " << mm << " year: " << yy << endl;
-	}
-
 	void DateString() {
-		Date_7 d1("01:10:2017");
-		d1.show();
+		Date d1("01:10:2017");
+		d1.showDate();
 	}
 
 }

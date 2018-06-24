@@ -1,9 +1,10 @@
-#include <iostream>;
-#include <string>;
-#include <stdlib.h>;
-#include <time.h>;
-#include <cmath>;
-#include "common.h";
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <time.h>
+#include <cmath>
+#include "common.h"
+#include "geomatics.h"
 
 namespace ChapterSix {
 
@@ -41,13 +42,14 @@ namespace ChapterSix {
 
 	void diceGame();
 
-	void CertanglePrograme();
+	void RertanglePrograme();
 
 	void MoreMarksStudents();
 
 	void Donors();
 
-	void Donors_2();
+	//void Donors2();
 
 	void DateString();
+
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <cmath>
 
 # define M_PI           3.14159265358979323846  /* pi */	
 
@@ -24,7 +25,20 @@ private:
 	int y;
 };
 
+class Vector
+{
+public:
+	Vector();
+	Vector(Point, Point);
+	Vector(double, double);
+	~Vector();
+	double absValueOfVector();
+	friend double angleOfVectors(Vector, Vector);
 
+private:
+	Point a, b;
+	double length, slope;
+};
 
 class Circle
 {
@@ -72,4 +86,16 @@ private:
 	double d1, d2, d3;
 };
 
+class Rectangle
+{
+public:
+	Rectangle();
+	Rectangle(Point, Point, Point, Point);
+	~Rectangle();
+	bool isRectangle();
+	bool isSquare();
+
+private:
+	Point a, b, c, d;
+};
 

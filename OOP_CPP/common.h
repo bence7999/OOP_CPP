@@ -60,6 +60,7 @@ class Date
 public:
 	Date();
 	Date(int, int, int);
+	Date(std::string);
 	~Date();
 	void Init();
 	void Init(int, int, int y = 2003);
@@ -88,6 +89,18 @@ public:
 
 private:
 	int real, imaginary;
+};
+
+class String
+{
+public:
+	String();
+	String(int, char[]);
+	~String();
+
+private:
+	int length;
+	char str[80];
 };
 
 

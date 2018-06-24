@@ -23,7 +23,7 @@ void Exit();
 
 int main(int argc, char *argv[]) {
 
-	ChapterSix::Inilist1();
+	ChapterSix::DateString();
 	
 	Exit(); 
 	return 0;

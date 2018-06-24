@@ -1,5 +1,6 @@
 #include <iostream>
 #include "common.h"
+#include "string"
 
 Bank::Bank()
 {
@@ -157,6 +158,27 @@ Date::Date(int d, int m, int y)
 	this->year = y;
 }
 
+Date::Date(std::string date)
+{
+	char delim = ':';
+
+	size_t found = date.find(delim);
+	std::string day = date.substr(0, found);
+	date = date.substr(found + 1);
+
+	found = date.find(delim, found);
+	std::string month = date.substr(0, found);
+	date = date.substr(found + 1);
+
+	found = date.find(delim, found);
+	std::string year = date.substr(0, found);
+
+	this->day = stoi(day);
+	this->month = stoi(month);
+	this->year = stoi(year);
+
+}
+
 void Date::Init() {
 	std::cout << "Interactive constructor" << std::endl;
 	std::cout << "Enter day month year : " << std::endl;
@@ -263,5 +285,20 @@ Complex divideComplex(Complex a, Complex b) {
 	tmp.imaginary = numerator.imaginary / denominator.real;
 
 	return tmp;
+}
+
+String::String()
+{
+	length = 0;
+	str[80] = {};
+}
+
+String::String(int l, char c[]) {
+	this->length = l;
+	strcpy_s(this->str, c);
+}
+
+String::~String()
+{
 }
 
